@@ -1,6 +1,8 @@
 # waifu2x-chainer-multilang_gui
-![tttt](https://user-images.githubusercontent.com/16046279/36409903-8168d9cc-1651-11e8-8151-652c870e9fea.png)
+![-1](https://user-images.githubusercontent.com/16046279/36453782-b3bb0cc0-16dc-11e8-999d-932c56684c56.png)
 Multilingual GUI for waifu2x-chainer(https://github.com/tsurumeso/waifu2x-chainer). Localization can be done via user-editable xaml file
+
+forked from https://github.com/f11894/waifu2x-converter_GUI
 
 ## Localization
 1. The localization files have the name UILang._language-code_.xaml; where _language-code_ is a 5-character identifier like en-US, zh-TW, ja-JP.
