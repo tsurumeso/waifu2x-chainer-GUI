@@ -3,7 +3,7 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <sys:String x:Key="ResourceDictionaryName">waifu2xui-en-US</sys:String>
     <!-- Localized strings -->
-    <sys:String x:Key="MainWnd_Title">waifu2x-converter multilingual GUI</sys:String>
+    <sys:String x:Key="MainWnd_Title">waifu2x-chainer multilingual GUI</sys:String>
     <sys:String x:Key="MainMenu_About">About</sys:String>
     <sys:String x:Key="MainMenu_Help">Help</sys:String>
     <sys:String x:Key="MainMenu_Version">Version Info</sys:String>
