@@ -19,7 +19,3 @@ Multilingual GUI for waifu2x-chainer(https://github.com/tsurumeso/waifu2x-chaine
 ## License and Sharing
 * Do what the fuck you want with this soft
 * No warranty attached
-
-## Old version here
-https://www.dropbox.com/sh/0y9scaml78otum2/AAAs4sTIHQWn_UfYCwwC95VKa?dl=0
-
