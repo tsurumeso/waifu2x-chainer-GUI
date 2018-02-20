@@ -44,6 +44,7 @@
     <!-- Tabs -->
     <sys:String x:Key="MainTab_Mode">Mode</sys:String>
     <!-- Tab:Mode -->
+    <sys:String x:Key="Main_Mode_waifu2x_chainerPath">waifu2x-chainer path:</sys:String>
     <sys:String x:Key="Main_Mode_TempPath">Temporary folder:</sys:String>
     <sys:String x:Key="Main_Mode_Alphachannel_background">Alpha channel background color:</sys:String>
     <sys:String x:Key="Main_Device_gp">Device</sys:String>
