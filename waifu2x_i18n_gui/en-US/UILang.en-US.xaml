@@ -48,8 +48,7 @@
     <sys:String x:Key="Main_Mode_TempPath">Temporary folder:</sys:String>
     <sys:String x:Key="Main_Mode_Alphachannel_background">Alpha channel background color:</sys:String>
     <sys:String x:Key="Main_Device_gp">Device</sys:String>
-    <sys:String x:Key="Main_Device_Compute">Processor ID</sys:String>
-    <sys:String x:Key="Main_Device_Compute_Tooltip">processor ID to use. Automatic if not specified.</sys:String>
+    <sys:String x:Key="Main_Device_Compute">GPU ID</sys:String>
     <sys:String x:Key="Main_checkAspect_ratio_keep">keep aspect ratio</sys:String>
     <sys:String x:Key="Main_checkDandD">Start conversion immediately after drag and drop</sys:String>
     <sys:String x:Key="Main_checkAlphachannel_ImageMagick">Separate alpha channels with ImageMagick</sys:String>

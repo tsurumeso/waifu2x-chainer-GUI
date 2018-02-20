@@ -129,7 +129,7 @@
                             <StackPanel Orientation="Vertical" Margin="1">
                                 <StackPanel Orientation="Horizontal" Margin="1">
                                     <Label Target="{Binding ElementName=txtDevice}" HorizontalAlignment="Left" Content="{DynamicResource ResourceKey=Main_Device_Compute}"></Label>
-                                    <TextBox Name="txtDevice" HorizontalAlignment="Right" MinWidth="50" MaxWidth="50"  Margin="1" MaxHeight="20" Text="" ToolTip="{DynamicResource ResourceKey=Main_Device_Compute_Tooltip}" ></TextBox>
+                                    <TextBox Name="txtDevice" HorizontalAlignment="Right" MinWidth="50" MaxWidth="50"  Margin="1" MaxHeight="20" Text="" ></TextBox>
                                 </StackPanel>
                             </StackPanel>
                         </GroupBox>
