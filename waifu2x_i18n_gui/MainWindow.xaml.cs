@@ -363,11 +363,11 @@ namespace waifu2x_i18n_gui
         {
             string msg =
                 "This is a multilingual graphical user-interface\n" +
-                "for the waifu2x-converter commandline program.\n" +
-                "You need a working copy of waifu2x-converter first\n" +
+                "for the waifu2x-chainer commandline program.\n" +
+                "You need a working copy of waifu2x-chainer first\n" +
                 "then copy everything from the GUI archive to\n" +
-                "waifu2x-converter folder.\n" +
-                "DO NOT rename any subdirectories inside waifu2x-converter folder\n" +
+                "waifu2x-chainer folder.\n" +
+                "DO NOT rename any subdirectories inside waifu2x-chainer folder\n" +
                 "To make a translation, copy one of the bundled xaml file\n" +
                 "then edit the copy with a text editor.\n" +
                 "Whenever you see a language code like en-US, change it to\n" +
@@ -379,10 +379,10 @@ namespace waifu2x_i18n_gui
         private void OnMenuVersionClick(object sender, RoutedEventArgs e)
         {
             string msg =
-                "Multilingual GUI for waifu2x-converter\n" +
+                "Multilingual GUI for waifu2x-chainer\n" +
                 "nanashi (2018)\n" +
-                "Version 1.6.1\n" +
-                "BuildDate: 11 Feb,2018\n" +
+                "Version 1.0\n" +
+                "BuildDate: 20 Feb,2018\n" +
                 "License: Do What the Fuck You Want License";
             MessageBox.Show(msg);
         }
@@ -713,33 +713,6 @@ namespace waifu2x_i18n_gui
 
         private void OnRun(object sender, RoutedEventArgs e)
         {
-            // Simple checks before further execution //
-            if (File.Exists("waifu2x-converter_x86.exe"))
-            {
-                waifu2xbinary.Clear();
-                waifu2xbinary.Append("waifu2x-converter_x86.exe");
-            }
-            if (File.Exists("waifu2x-converter_x64.exe"))
-            {
-                waifu2xbinary.Clear();
-                waifu2xbinary.Append("waifu2x-converter_x64.exe");
-            }
-            if (File.Exists("waifu2x-converter-cpp.exe"))
-            {
-                waifu2xbinary.Clear();
-                waifu2xbinary.Append("waifu2x-converter-cpp.exe");
-            }
-            if (waifu2xbinary.ToString() == "")
-            {
-                Errormessage(@"waifu2x-converter is missing!");
-                return;
-            }
-                /*if (!File.Exists("waifu2x-converter_x64.exe"))
-                {
-                    MessageBox.Show(@"waifu2x-converter_x64.exe is missing!");
-                    return;
-                }*/
-
             if (param_color.ToString() == "--model_dir models_rgb")
             {
                 if (!Directory.Exists("models_rgb"))
@@ -764,14 +737,6 @@ namespace waifu2x_i18n_gui
                     return;
                 }
             }
-
-            /*
-            if (!Directory.Exists("models"))
-            {
-                MessageBox.Show("Training model folder is missing!");
-                return;
-            }
-            */
 
             // Sets Source
             // The source must be a file or folder that exists
@@ -868,7 +833,7 @@ namespace waifu2x_i18n_gui
                 System.Text.RegularExpressions.RegexOptions.ECMAScript))
             {
                 param_device.Clear();
-                param_device.Append("--processor ");
+                param_device.Append("-g ");
                 param_device.Append(txtDevice.Text);
             }
             else
@@ -1016,7 +981,7 @@ namespace waifu2x_i18n_gui
             // Set scale ratio
 
             param_mag.Clear();
-            param_mag.Append("--scale_ratio ");
+            param_mag.Append("-s ");
             param_mag.Append("%scale_ratio%");
 
 

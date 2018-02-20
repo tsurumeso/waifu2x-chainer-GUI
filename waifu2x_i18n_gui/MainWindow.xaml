@@ -112,17 +112,17 @@
                         </GroupBox>
                         <GroupBox Name="gpColor" Header="{DynamicResource ResourceKey=Main_Mode_Color}" Padding="3" Margin="3">
                             <StackPanel Orientation="Vertical" Margin="3">
-                                <RadioButton Tag="--model_dir models_rgb" Name="btnRGB" Margin="2" Content="{DynamicResource ResourceKey=Main_Mode_Color_RGB}" Checked="OnColorChecked"></RadioButton>
-                                <RadioButton Tag="--model_dir models" Name="btnY" Margin="2" Content="{DynamicResource ResourceKey=Main_Mode_Color_Y}" Checked="OnColorChecked"></RadioButton>
-                                <RadioButton Tag="--model_dir photo" Name="btnPhoto" Margin="2" Content="{DynamicResource ResourceKey=Main_Mode_Color_Photo}" Checked="OnColorChecked"></RadioButton>
+                                <RadioButton Tag="-a 0" Name="btnRGB" Margin="2" Content="{DynamicResource ResourceKey=Main_Mode_Color_RGB}" Checked="OnColorChecked"></RadioButton>
+                                <RadioButton Tag="-a 1" Name="btnUpRGB" Margin="2" Content="{DynamicResource ResourceKey=Main_Mode_Color_UpRGB}" Checked="OnColorChecked"></RadioButton>
+                                <RadioButton Tag="-a 2" Name="btnResRGB" Margin="2" Content="{DynamicResource ResourceKey=Main_Mode_Color_ResRGB}" Checked="OnColorChecked"></RadioButton>
                             </StackPanel>
                         </GroupBox>
                         <GroupBox Name="gpBlock" Header="{DynamicResource ResourceKey=Main_Device_Block}" Padding="3" Margin="3">
                             <StackPanel Orientation="Vertical" Margin="3">
+                                <RadioButton Tag="--block_size 32" Name="btn32" Margin="2" Checked="OnBlockChecked">32</RadioButton>
                                 <RadioButton Tag="--block_size 64" Name="btn64" Margin="2" Checked="OnBlockChecked">64</RadioButton>
                                 <RadioButton Tag="--block_size 128" Name="btn128" Margin="2" Checked="OnBlockChecked">128</RadioButton>
                                 <RadioButton Tag="--block_size 256" Name="btn256" Margin="2" Checked="OnBlockChecked">256</RadioButton>
-                                <RadioButton Tag="--block_size 512" Name="btn512" Margin="2" Checked="OnBlockChecked">512</RadioButton>
                             </StackPanel>
                         </GroupBox>
                         <GroupBox Name="gpDevice" Header="{DynamicResource ResourceKey=Main_Device_gp}" Padding="1" Margin="1">
