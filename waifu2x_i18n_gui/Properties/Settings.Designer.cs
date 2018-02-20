@@ -25,13 +25,13 @@ namespace waifu2x_i18n_gui.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("RGB")]
-        public string model_dir {
+        [global::System.Configuration.DefaultSettingValueAttribute("ResRGB")]
+        public string Arch {
             get {
-                return ((string)(this["model_dir"]));
+                return ((string)(this["Arch"]));
             }
             set {
-                this["model_dir"] = value;
+                this["Arch"] = value;
             }
         }
         
@@ -61,7 +61,7 @@ namespace waifu2x_i18n_gui.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("512")]
+        [global::System.Configuration.DefaultSettingValueAttribute("32")]
         public string block_size {
             get {
                 return ((string)(this["block_size"]));
@@ -260,18 +260,6 @@ namespace waifu2x_i18n_gui.Properties {
             }
             set {
                 this["Alphachannel_background"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public string CPUthread {
-            get {
-                return ((string)(this["CPUthread"]));
-            }
-            set {
-                this["CPUthread"] = value;
             }
         }
     }

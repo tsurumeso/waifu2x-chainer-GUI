@@ -2,8 +2,8 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="waifu2x_i18n_gui.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="model_dir" Type="System.String" Scope="User">
-      <Value Profile="(Default)">RGB</Value>
+    <Setting Name="Arch" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ResRGB</Value>
     </Setting>
     <Setting Name="scale_ratio" Type="System.String" Scope="User">
       <Value Profile="(Default)">2</Value>
@@ -12,7 +12,7 @@
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="block_size" Type="System.String" Scope="User">
-      <Value Profile="(Default)">512</Value>
+      <Value Profile="(Default)">32</Value>
     </Setting>
     <Setting Name="informat" Type="System.String" Scope="User">
       <Value Profile="(Default)">*.jpg *.jpeg *.png *.bmp *.tif *.tiff</Value>
@@ -60,9 +60,6 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="Alphachannel_background" Type="System.String" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
-    <Setting Name="CPUthread" Type="System.String" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>

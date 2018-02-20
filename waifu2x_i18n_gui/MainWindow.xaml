@@ -110,11 +110,11 @@
 
                             </StackPanel>
                         </GroupBox>
-                        <GroupBox Name="gpColor" Header="{DynamicResource ResourceKey=Main_Mode_Color}" Padding="3" Margin="3">
+                        <GroupBox Name="gpColor" Header="{DynamicResource ResourceKey=Main_Mode_Arch}" Padding="3" Margin="3">
                             <StackPanel Orientation="Vertical" Margin="3">
-                                <RadioButton Tag="-a 0" Name="btnRGB" Margin="2" Content="{DynamicResource ResourceKey=Main_Mode_Color_RGB}" Checked="OnColorChecked"></RadioButton>
-                                <RadioButton Tag="-a 1" Name="btnUpRGB" Margin="2" Content="{DynamicResource ResourceKey=Main_Mode_Color_UpRGB}" Checked="OnColorChecked"></RadioButton>
-                                <RadioButton Tag="-a 2" Name="btnResRGB" Margin="2" Content="{DynamicResource ResourceKey=Main_Mode_Color_ResRGB}" Checked="OnColorChecked"></RadioButton>
+                                <RadioButton Tag="-a 0" Name="btnRGB" Margin="2" Content="{DynamicResource ResourceKey=Main_Mode_Arch_RGB}" Checked="OnArchChecked"></RadioButton>
+                                <RadioButton Tag="-a 1" Name="btnUpRGB" Margin="2" Content="{DynamicResource ResourceKey=Main_Mode_Arch_UpRGB}" Checked="OnArchChecked"></RadioButton>
+                                <RadioButton Tag="-a 2" Name="btnResRGB" Margin="2" Content="{DynamicResource ResourceKey=Main_Mode_Arch_ResRGB}" Checked="OnArchChecked"></RadioButton>
                             </StackPanel>
                         </GroupBox>
                         <GroupBox Name="gpBlock" Header="{DynamicResource ResourceKey=Main_Device_Block}" Padding="3" Margin="3">
@@ -130,10 +130,6 @@
                                 <StackPanel Orientation="Horizontal" Margin="1">
                                     <Label Target="{Binding ElementName=txtDevice}" HorizontalAlignment="Left" Content="{DynamicResource ResourceKey=Main_Device_Compute}"></Label>
                                     <TextBox Name="txtDevice" HorizontalAlignment="Right" MinWidth="50" MaxWidth="50"  Margin="1" MaxHeight="20" Text="" ToolTip="{DynamicResource ResourceKey=Main_Device_Compute_Tooltip}" ></TextBox>
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal" Margin="1">
-                                    <Label Target="{Binding ElementName=txtCPUthread}" HorizontalAlignment="Left" Content="{DynamicResource ResourceKey=Main_Device_CPUthread}"></Label>
-                                    <TextBox Name="txtCPUthread" HorizontalAlignment="Right" MinWidth="50" MaxWidth="50" MaxHeight="20" Margin="1" Text=""></TextBox>
                                 </StackPanel>
                             </StackPanel>
                         </GroupBox>

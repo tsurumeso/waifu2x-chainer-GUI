@@ -37,10 +37,10 @@
     <sys:String x:Key="Main_Mode_Denoise_1">Level 1</sys:String>
     <sys:String x:Key="Main_Mode_Denoise_2">Level 2</sys:String>
     <sys:String x:Key="Main_Mode_Denoise_3">Level 3</sys:String>
-    <sys:String x:Key="Main_Mode_Color">Model</sys:String>
-    <sys:String x:Key="Main_Mode_Color_RGB">2-D illust (RGB Model)</sys:String>
-    <sys:String x:Key="Main_Mode_Color_Y">2-D illust (Y Model)</sys:String>
-    <sys:String x:Key="Main_Mode_Color_Photo">Photography, Anime</sys:String>
+    <sys:String x:Key="Main_Mode_Arch">Model</sys:String>
+    <sys:String x:Key="Main_Mode_Arch_RGB">2-D illust (RGB Model)</sys:String>
+    <sys:String x:Key="Main_Mode_Arch_UpRGB">2-D illust (UpRGB Model)</sys:String>
+    <sys:String x:Key="Main_Mode_Arch_ResRGB">2-D illust (ResRGB Model)</sys:String>
     <!-- Tabs -->
     <sys:String x:Key="MainTab_Mode">Mode</sys:String>
     <!-- Tab:Mode -->
@@ -49,7 +49,6 @@
     <sys:String x:Key="Main_Device_gp">Device</sys:String>
     <sys:String x:Key="Main_Device_Compute">Processor ID</sys:String>
     <sys:String x:Key="Main_Device_Compute_Tooltip">processor ID to use. Automatic if not specified.</sys:String>
-    <sys:String x:Key="Main_Device_CPUthread">CPU Thread</sys:String>
     <sys:String x:Key="Main_checkAspect_ratio_keep">keep aspect ratio</sys:String>
     <sys:String x:Key="Main_checkDandD">Start conversion immediately after drag and drop</sys:String>
     <sys:String x:Key="Main_checkAlphachannel_ImageMagick">Separate alpha channels with ImageMagick</sys:String>
