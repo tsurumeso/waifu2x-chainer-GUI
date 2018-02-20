@@ -141,6 +141,10 @@
                     <GroupBox Name="gpDandD" Padding="3" Margin="3">
                         <StackPanel Orientation="Vertical" Margin="3">
                             <StackPanel Orientation="Horizontal">
+                                <Label Target="{Binding ElementName=txtWaifu2x_chainerPath}" HorizontalAlignment="Left" Content="{DynamicResource ResourceKey=Main_Mode_waifu2x_chainerPath}"></Label>
+                                <TextBox Name="txtWaifu2x_chainerPath" MinWidth="600" MaxWidth="600" AllowDrop="True" PreviewDragOver="On_DragOver" PreviewDragEnter="On_DragOver" PreviewDrop="On_waifu2x_chainerDrop"></TextBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
                                 <Label Target="{Binding ElementName=txtTempPath}" HorizontalAlignment="Left" Content="{DynamicResource ResourceKey=Main_Mode_TempPath}"></Label>
                                 <TextBox Name="txtTempPath" MinWidth="600" MaxWidth="600" AllowDrop="True" PreviewDragOver="On_DragOver" PreviewDragEnter="On_DragOver" PreviewDrop="On_TempDrop"></TextBox>
                             </StackPanel>

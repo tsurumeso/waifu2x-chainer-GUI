@@ -62,5 +62,8 @@
     <Setting Name="Alphachannel_background" Type="System.String" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
+    <Setting Name="waifu2x_chainer_dir" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\waifu2x-chainer</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

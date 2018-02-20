@@ -69,6 +69,8 @@ namespace waifu2x_i18n_gui
                txtTempPath.Text = Properties.Settings.Default.temporary_dir;
             }
 
+            txtWaifu2x_chainerPath.Text = Properties.Settings.Default.waifu2x_chainer_dir;
+
             if (System.Text.RegularExpressions.Regex.IsMatch(
                 Properties.Settings.Default.Device_ID,
                 @"^(\d+|-1)$",
@@ -180,6 +182,7 @@ namespace waifu2x_i18n_gui
         public static StringBuilder param_outquality = new StringBuilder("");
         public static StringBuilder param_outformat = new StringBuilder(".png");
         public static StringBuilder param_tempdir = new StringBuilder("%TEMP%");
+        public static StringBuilder param_waifu2x_chainer_dir = new StringBuilder("C:\\waifu2x-chainer");
         public static StringBuilder param_Alphachannel_background = new StringBuilder("none");
 
         public static StringBuilder random32 = new StringBuilder("");
@@ -251,6 +254,15 @@ namespace waifu2x_i18n_gui
             else
             {
                 Properties.Settings.Default.temporary_dir = System.IO.Path.GetTempPath();
+            }
+
+            if (Directory.Exists(this.txtWaifu2x_chainerPath.Text))
+            {
+                Properties.Settings.Default.waifu2x_chainer_dir = txtWaifu2x_chainerPath.Text;
+            }
+            else
+            {
+                Properties.Settings.Default.waifu2x_chainer_dir = "C:\\waifu2x-chainer";
             }
 
             // Properties.Settings.Default.Device_ID = txtDevice.Text;
@@ -497,6 +509,15 @@ namespace waifu2x_i18n_gui
             }
         }
 
+        private void On_waifu2x_chainerDrop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                string[] fn = (string[])e.Data.GetData(DataFormats.FileDrop);
+                this.txtWaifu2x_chainerPath.Text = fn[0];
+            }
+        }
+
         private void OnSetModeChecked(object sender, RoutedEventArgs e)
         {
             gpDenoise.IsEnabled = true;
@@ -693,30 +714,6 @@ namespace waifu2x_i18n_gui
 
         private void OnRun(object sender, RoutedEventArgs e)
         {
-            if (param_arch.ToString() == "--model_dir models_rgb")
-            {
-                if (!Directory.Exists("models_rgb"))
-                {
-                    Errormessage("Training models_rgb model folder is missing!");
-                    return;
-                }
-            }
-            if (param_arch.ToString() == "--model_dir models")
-            {
-                if (!Directory.Exists("models"))
-                {
-                    Errormessage("Training models model folder is missing!");
-                    return;
-                }
-            }
-            if (param_arch.ToString() == "--model_dir photo")
-            {
-                if (!Directory.Exists("photo"))
-                {
-                    Errormessage("Training photo model folder is missing!");
-                    return;
-                }
-            }
 
             // Sets Source
             // The source must be a file or folder that exists
@@ -761,6 +758,18 @@ namespace waifu2x_i18n_gui
             else
             {
                 Errormessage("Temporary folder is missing!");
+                return;
+            }
+
+            // waifu2x-chainerのパスを設定する
+            param_waifu2x_chainer_dir.Clear();
+            if (Directory.Exists(this.txtWaifu2x_chainerPath.Text))
+            {
+                param_waifu2x_chainer_dir.Append(txtWaifu2x_chainerPath.Text);
+            }
+            else
+            {
+                Errormessage("waifu2x-chainer folder is missing!");
                 return;
             }
 
@@ -888,12 +897,12 @@ namespace waifu2x_i18n_gui
                     { param_dst.Append(System.IO.Path.GetFileName(this.txtSrcPath.Text)); }
                 }
 
-                if (param_arch.ToString() == "--model_dir models_rgb")
+                if (param_arch.ToString() == "-a 0")
                    { param_dst.Append("(RGB)"); }
-                    if (param_arch.ToString() == "--model_dir models")
-                    { param_dst.Append("(Y)"); }
-                    if (param_arch.ToString() == "--model_dir photo")
-                    { param_dst.Append("(Photo)"); }
+                    if (param_arch.ToString() == "-a 1")
+                    { param_dst.Append("(UpRGB)"); }
+                    if (param_arch.ToString() == "-a 2")
+                    { param_dst.Append("(ResRGB)"); }
             }
             else
             {
@@ -1136,6 +1145,7 @@ namespace waifu2x_i18n_gui
 
 
                  // bat共通の処理
+                 "cd \"" + param_waifu2x_chainer_dir.ToString() + "\"\r\n" +
                  "set \"Output_no_overwirit=" + flagOutput_no_overwirit.ToString() + "\"\r\n" +
                  "if \"%Output_no_overwirit%\"==\"True\" if exist \"%Output_dir%%OUTPUT_Name%\" goto waifu2x_run_skip\r\n" +
                  "set \"Temporary_dir=" + param_tempdir.ToString() + "\"\r\n" +
@@ -1162,7 +1172,7 @@ namespace waifu2x_i18n_gui
                  ")\r\n" +
                  "if \"" + param_mode.ToString() + "\"==\"auto_scale\" if \"%jpg%\"==\"1\" set \"Mode=noise_scale " + param_denoise.ToString() + "\"\r\n" +
                  "if \"" + param_mode.ToString() + "\"==\"auto_scale\" if not \"%jpg%\"==\"1\" set \"Mode=scale\"\r\n" +
-                 "if not \"" + param_mode.ToString() + "\"==\"auto_scale\" if not \"" + param_mode.ToString() + "\"==\"auto_scale\" (\r\n" + 
+                 "if not \"" + param_mode.ToString() + "\"==\"auto_scale\" if not \"" + param_mode.ToString() + "\"==\"scale\" (\r\n" + 
                  "   set \"Mode=" + param_mode.ToString() + " " + param_denoise.ToString() + "\"\r\n" +
                  ") else (\r\n" +
                  "   set \"Mode=" + param_mode.ToString() + "\r\n" +
@@ -1334,6 +1344,7 @@ namespace waifu2x_i18n_gui
 
 
                  // bat共通の処理
+                 "cd \"" + param_waifu2x_chainer_dir.ToString() + "\"\r\n" +
                  "set \"Output_no_overwirit=" + flagOutput_no_overwirit.ToString() + "\"\r\n" +
                  "if \"%Output_no_overwirit%\"==\"True\" if exist \"%Output_dir%%OUTPUT_Name%\" goto waifu2x_run_skip\r\n" +
                  "set \"Temporary_dir=" + param_tempdir.ToString() + "\"\r\n" +
@@ -1360,7 +1371,7 @@ namespace waifu2x_i18n_gui
                  ")\r\n" +
                  "if \"" + param_mode.ToString() + "\"==\"auto_scale\" if \"%jpg%\"==\"1\" set \"Mode=noise_scale " + param_denoise.ToString() + "\"\r\n" +
                  "if \"" + param_mode.ToString() + "\"==\"auto_scale\" if not \"%jpg%\"==\"1\" set \"Mode=scale\"\r\n" +
-                 "if not \"" + param_mode.ToString() + "\"==\"auto_scale\" if not \"" + param_mode.ToString() + "\"==\"auto_scale\" (\r\n" +
+                 "if not \"" + param_mode.ToString() + "\"==\"auto_scale\" if not \"" + param_mode.ToString() + "\"==\"scale\" (\r\n" +
                  "   set \"Mode=" + param_mode.ToString() + " " + param_denoise.ToString() + "\"\r\n" +
                  ") else (\r\n" +
                  "   set \"Mode=" + param_mode.ToString() + "\r\n" +
@@ -1541,6 +1552,7 @@ namespace waifu2x_i18n_gui
 
 
                  // bat共通の処理
+                 "cd \"" + param_waifu2x_chainer_dir.ToString() + "\"\r\n" +
                  "set \"Output_no_overwirit=" + flagOutput_no_overwirit.ToString() + "\"\r\n" +
                  "if \"%Output_no_overwirit%\"==\"True\" if exist \"%Output_dir%%OUTPUT_Name%\" goto waifu2x_run_skip\r\n" +
                  "set \"Temporary_dir=" + param_tempdir.ToString() + "\"\r\n" +
@@ -1567,7 +1579,7 @@ namespace waifu2x_i18n_gui
                  ")\r\n" +
                  "if \"" + param_mode.ToString() + "\"==\"auto_scale\" if \"%jpg%\"==\"1\" set \"Mode=noise_scale " + param_denoise.ToString() + "\"\r\n" +
                  "if \"" + param_mode.ToString() + "\"==\"auto_scale\" if not \"%jpg%\"==\"1\" set \"Mode=scale\"\r\n" +
-                 "if not \"" + param_mode.ToString() + "\"==\"auto_scale\" if not \"" + param_mode.ToString() + "\"==\"auto_scale\" (\r\n" +
+                 "if not \"" + param_mode.ToString() + "\"==\"auto_scale\" if not \"" + param_mode.ToString() + "\"==\"scale\" (\r\n" +
                  "   set \"Mode=" + param_mode.ToString() + " " + param_denoise.ToString() + "\"\r\n" +
                  ") else (\r\n" +
                  "   set \"Mode=" + param_mode.ToString() + "\r\n" +

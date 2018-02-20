@@ -262,5 +262,17 @@ namespace waifu2x_i18n_gui.Properties {
                 this["Alphachannel_background"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\waifu2x-chainer")]
+        public string waifu2x_chainer_dir {
+            get {
+                return ((string)(this["waifu2x_chainer_dir"]));
+            }
+            set {
+                this["waifu2x_chainer_dir"] = value;
+            }
+        }
     }
 }
