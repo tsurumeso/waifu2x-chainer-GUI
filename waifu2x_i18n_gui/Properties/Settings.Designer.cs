@@ -274,5 +274,17 @@ namespace waifu2x_i18n_gui.Properties {
                 this["waifu2x_chainer_dir"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool TTAmode {
+            get {
+                return ((bool)(this["TTAmode"]));
+            }
+            set {
+                this["TTAmode"] = value;
+            }
+        }
     }
 }

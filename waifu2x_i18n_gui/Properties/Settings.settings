@@ -65,5 +65,8 @@
     <Setting Name="waifu2x_chainer_dir" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\waifu2x-chainer</Value>
     </Setting>
+    <Setting Name="TTAmode" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
