@@ -10,7 +10,7 @@ using System.IO;
 using System.Globalization;
 using System.Windows.Controls;
 
-namespace waifu2x_i18n_gui
+namespace waifu2x_chainer_gui
 {
     /// <summary>
     /// Interaction logic for App.xaml

@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="waifu2x_i18n_gui.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="waifu2x_chainer_gui.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
     <Setting Name="Arch" Type="System.String" Scope="User">
@@ -12,7 +12,7 @@
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="block_size" Type="System.String" Scope="User">
-      <Value Profile="(Default)">32</Value>
+      <Value Profile="(Default)">64</Value>
     </Setting>
     <Setting Name="informat" Type="System.String" Scope="User">
       <Value Profile="(Default)">*.jpg *.jpeg *.png *.bmp *.tif *.tiff</Value>
