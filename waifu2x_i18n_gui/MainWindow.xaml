@@ -103,10 +103,10 @@
                         </GroupBox>
                         <GroupBox Name="gpDenoise" Header="{DynamicResource ResourceKey=Main_Mode_Denoise}" Padding="3" Margin="3" Height="130">
                             <StackPanel Orientation="Vertical" Margin="3">
-                                <RadioButton Tag="--noise_level 0" Name="btnDenoise0" Margin="2" Content="{DynamicResource ResourceKey=Main_Mode_Denoise_0}" Checked="OnDenoiseChecked"></RadioButton>
-                                <RadioButton Tag="--noise_level 1" Name="btnDenoise1" Margin="2" Content="{DynamicResource ResourceKey=Main_Mode_Denoise_1}" Checked="OnDenoiseChecked"></RadioButton>
-                                <RadioButton Tag="--noise_level 2" Name="btnDenoise2" Margin="2" Content="{DynamicResource ResourceKey=Main_Mode_Denoise_2}" Checked="OnDenoiseChecked"></RadioButton>
-                                <RadioButton Tag="--noise_level 3" Name="btnDenoise3" Margin="2" Content="{DynamicResource ResourceKey=Main_Mode_Denoise_3}" Checked="OnDenoiseChecked"></RadioButton>
+                                <RadioButton Tag="-n 0" Name="btnDenoise0" Margin="2" Content="{DynamicResource ResourceKey=Main_Mode_Denoise_0}" Checked="OnDenoiseChecked"></RadioButton>
+                                <RadioButton Tag="-n 1" Name="btnDenoise1" Margin="2" Content="{DynamicResource ResourceKey=Main_Mode_Denoise_1}" Checked="OnDenoiseChecked"></RadioButton>
+                                <RadioButton Tag="-n 2" Name="btnDenoise2" Margin="2" Content="{DynamicResource ResourceKey=Main_Mode_Denoise_2}" Checked="OnDenoiseChecked"></RadioButton>
+                                <RadioButton Tag="-n 3" Name="btnDenoise3" Margin="2" Content="{DynamicResource ResourceKey=Main_Mode_Denoise_3}" Checked="OnDenoiseChecked"></RadioButton>
 
                             </StackPanel>
                         </GroupBox>
@@ -119,10 +119,10 @@
                         </GroupBox>
                         <GroupBox Name="gpBlock" Header="{DynamicResource ResourceKey=Main_Device_Block}" Padding="3" Margin="3">
                             <StackPanel Orientation="Vertical" Margin="3">
-                                <RadioButton Tag="--block_size 32" Name="btn32" Margin="2" Checked="OnBlockChecked">32</RadioButton>
-                                <RadioButton Tag="--block_size 64" Name="btn64" Margin="2" Checked="OnBlockChecked">64</RadioButton>
-                                <RadioButton Tag="--block_size 128" Name="btn128" Margin="2" Checked="OnBlockChecked">128</RadioButton>
-                                <RadioButton Tag="--block_size 256" Name="btn256" Margin="2" Checked="OnBlockChecked">256</RadioButton>
+                                <RadioButton Tag="-l 32" Name="btn32" Margin="2" Checked="OnBlockChecked">32</RadioButton>
+                                <RadioButton Tag="-l 64" Name="btn64" Margin="2" Checked="OnBlockChecked">64</RadioButton>
+                                <RadioButton Tag="-l 128" Name="btn128" Margin="2" Checked="OnBlockChecked">128</RadioButton>
+                                <RadioButton Tag="-l 256" Name="btn256" Margin="2" Checked="OnBlockChecked">256</RadioButton>
                             </StackPanel>
                         </GroupBox>
                         <GroupBox Name="gpDevice" Header="{DynamicResource ResourceKey=Main_Device_gp}" Padding="1" Margin="1">

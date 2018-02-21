@@ -177,7 +177,7 @@ namespace waifu2x_chainer_gui
         public static StringBuilder param_denoise = new StringBuilder("");
         public static StringBuilder param_arch = new StringBuilder(@"-a 2");
         //public static StringBuilder param_device = new StringBuilder("-p gpu");
-        public static StringBuilder param_block = new StringBuilder("--block_size 64");
+        public static StringBuilder param_block = new StringBuilder("-l 64");
         public static StringBuilder param_mode = new StringBuilder("noise_scale");
         public static StringBuilder param_device = new StringBuilder("");
         public static StringBuilder param_TTAmode = new StringBuilder("");
@@ -280,10 +280,10 @@ namespace waifu2x_chainer_gui
                Properties.Settings.Default.Device_ID = "Unspecified";
             }
 
-            string param_block_r = param_block.ToString().Replace("--block_size ", "");
+            string param_block_r = param_block.ToString().Replace("-l ", "");
             Properties.Settings.Default.block_size = param_block_r;
             
-            string param_denoise_r = param_denoise.ToString().Replace("--noise_level ", "");
+            string param_denoise_r = param_denoise.ToString().Replace("-n ", "");
             Properties.Settings.Default.noise_level = param_denoise_r;
             
             if (param_arch.ToString().Trim() == "-a 0")
@@ -377,7 +377,7 @@ namespace waifu2x_chainer_gui
                 "Multilingual GUI for waifu2x-chainer\n" +
                 "nanashi (2018)\n" +
                 "Version 1.0\n" +
-                "BuildDate: 20 Feb,2018\n" +
+                "BuildDate: 22 Feb,2018\n" +
                 "License: Do What the Fuck You Want License";
             MessageBox.Show(msg);
         }
@@ -862,7 +862,7 @@ namespace waifu2x_chainer_gui
             // TTAモードの引数を追加する
             param_TTAmode.Clear();
             if (checkTTAmode.IsChecked == true)
-            { param_TTAmode.Append("--tta"); }
+            { param_TTAmode.Append("-t"); }
 
             // 縦横比を保たない引数を追加する
             Not_Aspect_ratio_keep_argument.Clear();
@@ -976,13 +976,13 @@ namespace waifu2x_chainer_gui
                 {
                     param_dst.Append("(noise_scale)");
 
-                    if (param_denoise.ToString() == "--noise_level 0")
+                    if (param_denoise.ToString() == "-n 0")
                     { param_dst.Append("(Level0)"); }
-                    if (param_denoise.ToString() == "--noise_level 1")
+                    if (param_denoise.ToString() == "-n 1")
                     { param_dst.Append("(Level1)"); }
-                    if (param_denoise.ToString() == "--noise_level 2")
+                    if (param_denoise.ToString() == "-n 2")
                     { param_dst.Append("(Level2)"); }
-                    if (param_denoise.ToString() == "--noise_level 3")
+                    if (param_denoise.ToString() == "-n 3")
                     { param_dst.Append("(Level3)"); }
 
                     if (checkTTAmode.IsChecked == true)
@@ -1025,13 +1025,13 @@ namespace waifu2x_chainer_gui
                 {
                     param_dst.Append("(auto_scale)");
 
-                    if (param_denoise.ToString() == "--noise_level 0")
+                    if (param_denoise.ToString() == "-n 0")
                     { param_dst.Append("(Level0)"); }
-                    if (param_denoise.ToString() == "--noise_level 1")
+                    if (param_denoise.ToString() == "-n 1")
                     { param_dst.Append("(Level1)"); }
-                    if (param_denoise.ToString() == "--noise_level 2")
+                    if (param_denoise.ToString() == "-n 2")
                     { param_dst.Append("(Level2)"); }
-                    if (param_denoise.ToString() == "--noise_level 3")
+                    if (param_denoise.ToString() == "-n 3")
                     { param_dst.Append("(Level3)"); }
 
                     if (checkTTAmode.IsChecked == true)
@@ -1075,13 +1075,13 @@ namespace waifu2x_chainer_gui
                 {
                     param_dst.Append("(noise)");
 
-                    if (param_denoise.ToString() == "--noise_level 0")
+                    if (param_denoise.ToString() == "-n 0")
                     { param_dst.Append("(Level0)"); }
-                    if (param_denoise.ToString() == "--noise_level 1")
+                    if (param_denoise.ToString() == "-n 1")
                     { param_dst.Append("(Level1)"); }
-                    if (param_denoise.ToString() == "--noise_level 2")
+                    if (param_denoise.ToString() == "-n 2")
                     { param_dst.Append("(Level2)"); }
-                    if (param_denoise.ToString() == "--noise_level 3")
+                    if (param_denoise.ToString() == "-n 3")
                     { param_dst.Append("(Level3)"); }
 
                     if (checkTTAmode.IsChecked == true)
