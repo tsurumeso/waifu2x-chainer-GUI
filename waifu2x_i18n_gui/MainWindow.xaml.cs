@@ -376,8 +376,8 @@ namespace waifu2x_chainer_gui
             string msg =
                 "Multilingual GUI for waifu2x-chainer\n" +
                 "nanashi (2018)\n" +
-                "Version 1.0\n" +
-                "BuildDate: 22 Feb,2018\n" +
+                "Version 1.0.1\n" +
+                "BuildDate: 23 Feb,2018\n" +
                 "License: Do What the Fuck You Want License";
             MessageBox.Show(msg);
         }
@@ -1199,14 +1199,14 @@ namespace waifu2x_chainer_gui
                  "   set \"Mode=" + param_mode.ToString() + "\r\n" +
                  ")\r\n" +
                  "set \"Output_format=" + param_outformat.ToString() + "\"\r\n" +
-                 "for %%i in (.jpg,.jp2,.ppm) do if \"%image_alpha%\"==\"true\" if \"%Output_format%\"==\"%%~i\" set \"alpha_off_argument=^( +clone -alpha opaque -fill white -colorize 100%% ^) +swap -geometry +0+0 -compose Over -composite -alpha off\"\r\n" +
+                 "for %%i in (.jpg,.jp2,.ppm) do if \"%image_alpha%\"==\"true\" if \"%Output_format%\"==\"%%~i\" set \"alpha_off_argument=^( +clone -alpha opaque -fill white -colorize 100%% ^) +swap -geometry +0+0 -compose Over -composite -alpha off\" >NUL\r\n" +
                  "set \"Temporary_Name=" + random32.ToString() + "_%RANDOM%_%RANDOM%_%RANDOM%_\"\r\n" +
                  // アルファチャンネルが無い場合は普通に拡大
-                 "if not \"%image_alpha%\"==\"true\" " + waifu2xbinary.ToString() + " " + "-i" + " " + "%Image_path%" + " " + "-m %mode%" + " " + param_mag.ToString() + " " + param_arch.ToString() + " " + param_block.ToString() + " " + param_device.ToString() + " " + param_TTAmode.ToString() + " " + "-o \"%Temporary_dir%%Temporary_Name%_BefConvExt.png\"\r\n" +
+                 "if not \"%image_alpha%\"==\"true\" " + waifu2xbinary.ToString() + " " + "-i" + " " + "%Image_path%" + " " + "-m %mode%" + " " + param_mag.ToString() + " " + param_arch.ToString() + " " + param_block.ToString() + " " + param_device.ToString() + " " + param_TTAmode.ToString() + " " + "-o \"%Temporary_dir%%Temporary_Name%_BefConvExt.png\" 2>&1\r\n" +
                  // 元のファイル名がユニコードでも処理出来るようにテンポフォルダに別名でコピーする
                  "if not \"%image_alpha%\"==\"true\" if not \"%ERRORLEVEL%\"==\"0\" (\r\n" +
-                 "   copy /Y %Image_path% \"%Temporary_dir%%Temporary_Name%%Image_ext%\"\r\n" +
-                 "   " + waifu2xbinary.ToString() + " " + "-i" + " " + "\"%Temporary_dir%%Temporary_Name%%Image_ext%\"" + " " + "-m %mode%" + " " + param_mag.ToString() + " " + param_arch.ToString() + " " + param_block.ToString() + " " + param_device.ToString() + " " + param_TTAmode.ToString() + " " + "-o \"%Temporary_dir%%Temporary_Name%_BefConvExt.png\"\r\n" +
+                 "   copy /Y %Image_path% \"%Temporary_dir%%Temporary_Name%%Image_ext%\" >nul\r\n" +
+                 "   " + waifu2xbinary.ToString() + " " + "-i" + " " + "\"%Temporary_dir%%Temporary_Name%%Image_ext%\"" + " " + "-m %mode%" + " " + param_mag.ToString() + " " + param_arch.ToString() + " " + param_block.ToString() + " " + param_device.ToString() + " " + param_TTAmode.ToString() + " " + "-o \"%Temporary_dir%%Temporary_Name%_BefConvExt.png\" 2>&1\r\n" +
                  ")\r\n" +
                  "if not \"%image_alpha%\"==\"true\" if not \"%output_width%%output_height%\"==\"\" (\r\n" +
                  "   magick.exe convert \"%Temporary_dir%%Temporary_Name%_BefConvExt.png\" %resize_argument% " + param_outquality.ToString() + " \"%Temporary_dir%%Temporary_Name%_penultimate" + param_outformat.ToString() + "\" >NUL\r\n" +
@@ -1221,29 +1221,29 @@ namespace waifu2x_chainer_gui
                  // アルファチャンネルが有ったらImageMagickで分離して拡大
                  "if \"%alpha_off_argument%\"==\"\" if \"%image_alpha%\"==\"true\" (\r\n" +
                  param_Alphachannel_background.ToString() + "\r\n" +
-                 "   magick.exe convert %Image_path% -channel matte -separate +matte png24:\"%Temporary_dir%%Temporary_Name%_alpha.png\"\r\n" +
+                 "   magick.exe convert %Image_path% -channel matte -separate +matte png24:\"%Temporary_dir%%Temporary_Name%_alpha.png\" >NUL\r\n" +
                  "   for /f \"delims=\" %%a in ('magick.exe identify -format \"%%k\" \"%Temporary_dir%%Temporary_Name%_alpha.png\"') do set \"image_alpha_color=%%a\"\r\n" +
-                 "   " + waifu2xbinary.ToString() + " " + " -i" + " " + "\"%Temporary_dir%%Temporary_Name%_RGB.png\"" + " " + "-m %mode%" + " " + param_mag.ToString() + " " + param_arch.ToString() + " " + param_block.ToString() + " " + param_device.ToString() + " " + param_TTAmode.ToString() + " " + "-o \"%Temporary_dir%%Temporary_Name%_RGB_2x.png\"\r\n" +
+                 "   " + waifu2xbinary.ToString() + " " + " -i" + " " + "\"%Temporary_dir%%Temporary_Name%_RGB.png\"" + " " + "-m %mode%" + " " + param_mag.ToString() + " " + param_arch.ToString() + " " + param_block.ToString() + " " + param_device.ToString() + " " + param_TTAmode.ToString() + " " + "-o \"%Temporary_dir%%Temporary_Name%_RGB_2x.png\" 2>&1\r\n" +
                  ")\r\n" +
                  "if \"%alpha_off_argument%\"==\"\" if \"%image_alpha_color%\"==\"1\" for /f \"delims=\" %%a in ('magick.exe identify -format \"%%w\" \"%Temporary_dir%%Temporary_Name%_RGB_2x.png\"') do set \"image_2x_width=%%a\"\r\n" +
                  "if \"%alpha_off_argument%\"==\"\" if \"%image_alpha_color%\"==\"1\" for /f \"delims=\" %%a in ('magick.exe identify -format \"%%h\" \"%Temporary_dir%%Temporary_Name%_RGB_2x.png\"') do set \"image_2x_height=%%a\"\r\n" +
                  "if \"%alpha_off_argument%\"==\"\" if \"%image_alpha%\"==\"true\" (\r\n" +
-                 "   if \"%image_alpha_color%\"==\"1\" magick.exe convert \"%Temporary_dir%%Temporary_Name%_alpha.png\" -sample %image_2x_width%x%image_2x_height%! \"%Temporary_dir%%Temporary_Name%_alpha_2x.png\"\r\n" +
-                 "   if not \"%image_alpha_color%\"==\"1\" " + waifu2xbinary.ToString() + " " + "-i" + " " + "\"%Temporary_dir%%Temporary_Name%_alpha.png\"" + " " + "-m %mode%" + " " + param_mag.ToString() + " " + param_arch.ToString() + " " + param_block.ToString() + " " + param_device.ToString() + " " + param_TTAmode.ToString() + " " + "-o \"%Temporary_dir%%Temporary_Name%_alpha_2x.png\"\r\n" +
+                 "   if \"%image_alpha_color%\"==\"1\" magick.exe convert \"%Temporary_dir%%Temporary_Name%_alpha.png\" -sample %image_2x_width%x%image_2x_height%! \"%Temporary_dir%%Temporary_Name%_alpha_2x.png\" >NUL\r\n" +
+                 "   if not \"%image_alpha_color%\"==\"1\" " + waifu2xbinary.ToString() + " " + "-i" + " " + "\"%Temporary_dir%%Temporary_Name%_alpha.png\"" + " " + "-m %mode%" + " " + param_mag.ToString() + " " + param_arch.ToString() + " " + param_block.ToString() + " " + param_device.ToString() + " " + param_TTAmode.ToString() + " " + "-o \"%Temporary_dir%%Temporary_Name%_alpha_2x.png\" 2>&1\r\n" +
                  "   magick.exe convert \"%Temporary_dir%%Temporary_Name%_RGB_2x.png\" \"%Temporary_dir%%Temporary_Name%_alpha_2x.png\" -compose CopyOpacity -composite %resize_argument% " + param_outquality.ToString() + " \"%Temporary_dir%%Temporary_Name%_penultimate" + param_outformat.ToString() + "\" >NUL\r\n" +
                  "   move /Y \"%Temporary_dir%%Temporary_Name%_penultimate" + param_outformat.ToString() + "\" \"%Output_dir%%OUTPUT_Name%\" >NUL\r\n" +
-                 "   del \"%Temporary_dir%%Temporary_Name%_RGB.png\"\r\n" +
-                 "   del \"%Temporary_dir%%Temporary_Name%_RGB_2x.png\"\r\n" +
-                 "   del \"%Temporary_dir%%Temporary_Name%_alpha.png\"\r\n" +
-                 "   del \"%Temporary_dir%%Temporary_Name%_alpha_2x.png\"\r\n" +
+                 "   del \"%Temporary_dir%%Temporary_Name%_RGB.png\" >NUL\r\n" +
+                 "   del \"%Temporary_dir%%Temporary_Name%_RGB_2x.png\" >NUL\r\n" +
+                 "   del \"%Temporary_dir%%Temporary_Name%_alpha.png\" >NUL\r\n" +
+                 "   del \"%Temporary_dir%%Temporary_Name%_alpha_2x.png\" >NUL\r\n" +
                  ")\r\n" +
                  // 出力形式がアルファチャンネルをサポートしてないので最初に非透過pngにする
                  "if not \"%alpha_off_argument%\"==\"\" if \"%image_alpha%\"==\"true\" (\r\n" +
-                 "   magick.exe convert %Image_path% %alpha_off_argument% png24:\"%Temporary_dir%%Temporary_Name%_alpha_off.png\"\r\n" +
-                 "   " + waifu2xbinary.ToString() + " " + " -i" + " " + "\"%Temporary_dir%%Temporary_Name%_alpha_off.png\"" + " " + "-m %mode%" + " " + param_mag.ToString() + " " + param_arch.ToString() + " " + param_block.ToString() + " " + param_device.ToString() + " " + param_TTAmode.ToString() + " " + "-o \"%Temporary_dir%%Temporary_Name%_BefConvExt.png\"\r\n" +
+                 "   magick.exe convert %Image_path% %alpha_off_argument% png24:\"%Temporary_dir%%Temporary_Name%_alpha_off.png\" >nul\r\n" +
+                 "   " + waifu2xbinary.ToString() + " " + " -i" + " " + "\"%Temporary_dir%%Temporary_Name%_alpha_off.png\"" + " " + "-m %mode%" + " " + param_mag.ToString() + " " + param_arch.ToString() + " " + param_block.ToString() + " " + param_device.ToString() + " " + param_TTAmode.ToString() + " " + "-o \"%Temporary_dir%%Temporary_Name%_BefConvExt.png\" 2>&1\r\n" +
                  "   magick.exe convert \"%Temporary_dir%%Temporary_Name%_BefConvExt.png\" %resize_argument% " + param_outquality.ToString() + " \"%Temporary_dir%%Temporary_Name%_penultimate" + param_outformat.ToString() + "\" >NUL\r\n" +
                  "   move /Y \"%Temporary_dir%%Temporary_Name%_penultimate" + param_outformat.ToString() + "\" \"%Output_dir%%OUTPUT_Name%\" >NUL\r\n" +
-                 "   del \"%Temporary_dir%%Temporary_Name%_alpha_off.png\"\r\n" +
+                 "   del \"%Temporary_dir%%Temporary_Name%_alpha_off.png\" >nul\r\n" +
                  ")\r\n" +
                  "if exist \"%Temporary_dir%%Temporary_Name%%Image_ext%\" del \"%Temporary_dir%%Temporary_Name%%Image_ext%\" >nul\"\r\n" +
                  "if exist \"%Temporary_dir%%Temporary_Name%_BefConvExt.png\" del \"%Temporary_dir%%Temporary_Name%_BefConvExt.png\" >nul\"\r\n" +
