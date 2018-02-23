@@ -5,7 +5,7 @@ Multilingual GUI for waifu2x-chainer(https://github.com/tsurumeso/waifu2x-chaine
 forked from https://github.com/f11894/waifu2x-converter_GUI
 
 ## Installation
-1. You must install waifu2x-chtainer and ImageMagick beforehand.
+1. You must install waifu2x-chtainer and ImageMagick 7 beforehand.
 2. Set the "waifu2x-chainer path" on the Mode tab appropriately.
 
 ## Localization
