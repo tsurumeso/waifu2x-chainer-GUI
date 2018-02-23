@@ -766,7 +766,7 @@ namespace waifu2x_chainer_gui
 
             // waifu2x-chainerのパスを設定する
             param_waifu2x_chainer_dir.Clear();
-            if (Directory.Exists(this.txtWaifu2x_chainerPath.Text))
+            if (File.Exists(this.txtWaifu2x_chainerPath.Text + "\\waifu2x.py"))
             {
                 param_waifu2x_chainer_dir.Append(txtWaifu2x_chainerPath.Text);
             }
