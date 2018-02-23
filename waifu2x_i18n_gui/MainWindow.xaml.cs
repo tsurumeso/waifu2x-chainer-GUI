@@ -376,8 +376,8 @@ namespace waifu2x_chainer_gui
             string msg =
                 "Multilingual GUI for waifu2x-chainer\n" +
                 "nanashi (2018)\n" +
-                "Version 1.0.1\n" +
-                "BuildDate: 23 Feb,2018\n" +
+                "Version 1.0.2\n" +
+                "BuildDate: 24 Feb,2018\n" +
                 "License: Do What the Fuck You Want License";
             MessageBox.Show(msg);
         }
@@ -469,6 +469,9 @@ namespace waifu2x_chainer_gui
                                );
                     sw.WriteLine("@echo off");
                     sw.WriteLine("chcp 65001 >nul");
+                    // ImageMagickがインストールされているかチェックする
+                    sw.WriteLine("magick.exe -h >nul 2>&1");
+                    sw.WriteLine("if not \"%ERRORLEVEL%\"==\"0\" echo ImageMagick 7 is not installed. && del \"" + waifu2x_bat.ToString() + "\" && exit");
                     sw.WriteLine("set \"ProcessedCount=0\"");
                     FileCount = 0;
                     string stCsvData = txtExt.Text;
@@ -1158,13 +1161,14 @@ namespace waifu2x_chainer_gui
                 // Assemble parameters
                 string TextBox1 = "@echo off\r\n" +
                 "chcp 65001 >nul\r\n" +
+                 // ImageMagickがインストールされているかチェックする
+                 "magick.exe -h >nul 2>&1\r\n" +
+                 "if not \"%ERRORLEVEL%\"==\"0\" echo ImageMagick 7 is not installed. && del \"" + waifu2x_bat.ToString() + "\" && exit\r\n" +
                  "set Image_path=\"" + param_src.ToString() + "\"\r\n" +
                  ":waifu2x_run\r\n" +
                  "setlocal\r\n" +
                  "FOR %%A IN (" + param_dst.ToString() + ") DO set \"OUTPUT_Name=%%~nA" + param_outformat.ToString() + "\"\r\n" +
                  "FOR %%A IN (" + param_dst.ToString() + ") DO set \"Output_dir=%%~dpA\"\r\n" +
-
-
                  // bat共通の処理
                  "cd \"" + param_waifu2x_chainer_dir.ToString() + "\"\r\n" +
                  "set \"Output_no_overwirit=" + flagOutput_no_overwirit.ToString() + "\"\r\n" +
@@ -1252,7 +1256,6 @@ namespace waifu2x_chainer_gui
                  "set Image_path=\r\n" +
 
 
-
                  "del \"" + waifu2x_bat.ToString() + "\"\r\n" +
                  "exit /b\r\n" +
                  "\"\r\n" +
@@ -1327,6 +1330,9 @@ namespace waifu2x_chainer_gui
                     // Setup ProcessStartInfo
                        string TextBox1 = "@echo off\r\n" +
                        "chcp 65001 >nul\r\n" +
+                       // ImageMagickがインストールされているかチェックする
+                        "magick.exe -h >nul 2>&1\r\n" +
+                        "if not \"%ERRORLEVEL%\"==\"0\" echo ImageMagick 7 is not installed. && del \"" + waifu2x_bat.ToString() + "\" && exit\r\n" +
                         "set \"OutputFolder=" + param_dst.ToString() + "\"\r\n" +
                         //"set OutputFolder=%OutputFolder:\"=%\r\n" +
                         "for %%A IN (\"" + param_src.ToString() + "\") do set \"A=%%~aA\"\r\n" +
