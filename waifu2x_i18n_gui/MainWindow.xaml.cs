@@ -472,10 +472,10 @@ namespace waifu2x_chainer_gui
                     sw.WriteLine("cd \"" + this.txtWaifu2x_chainerPath.Text + "\"");
                     // waifu2x-chainerがインストールされているかチェックする
                     sw.WriteLine("Python waifu2x.py -h >nul 2>&1");
-                    sw.WriteLine("if not \"%ERRORLEVEL%\"==\"0\" echo waifu2x-chainer is not installed. && del \"" + waifu2x_bat.ToString() + "\" && exit");
+                    sw.WriteLine("if not \"%ERRORLEVEL%\"==\"0\" echo waifu2x-chainer is not installed. && del \"%~dp0" + waifu2x_bat.ToString() + "\" && exit");
                     // ImageMagickがインストールされているかチェックする
                     sw.WriteLine("magick.exe -h >nul 2>&1");
-                    sw.WriteLine("if not \"%ERRORLEVEL%\"==\"0\" echo ImageMagick 7 is not installed. && del \"" + waifu2x_bat.ToString() + "\" && exit");
+                    sw.WriteLine("if not \"%ERRORLEVEL%\"==\"0\" echo ImageMagick 7 is not installed. && del \"%~dp0" + waifu2x_bat.ToString() + "\" && exit");
                     sw.WriteLine("set \"ProcessedCount=0\"");
                     FileCount = 0;
                     string stCsvData = txtExt.Text;
@@ -1168,10 +1168,10 @@ namespace waifu2x_chainer_gui
                 "cd \"" + param_waifu2x_chainer_dir.ToString() + "\"\r\n" +
                  // waifu2x-chainerがインストールされているかチェックする
                  "Python waifu2x.py -h >nul 2>&1\r\n" +
-                 "if not \"%ERRORLEVEL%\"==\"0\" echo waifu2x-chainer is not installed. && del \"" + waifu2x_bat.ToString() + "\" && exit\r\n" +
+                 "if not \"%ERRORLEVEL%\"==\"0\" echo waifu2x-chainer is not installed. && del \"%~dp0" + waifu2x_bat.ToString() + "\" && exit\r\n" +
                  // ImageMagickがインストールされているかチェックする
                  "magick.exe -h >nul 2>&1\r\n" +
-                 "if not \"%ERRORLEVEL%\"==\"0\" echo ImageMagick 7 is not installed. && del \"" + waifu2x_bat.ToString() + "\" && exit\r\n" +
+                 "if not \"%ERRORLEVEL%\"==\"0\" echo ImageMagick 7 is not installed. && del \"%~dp0" + waifu2x_bat.ToString() + "\" && exit\r\n" +
                  "set Image_path=\"" + param_src.ToString() + "\"\r\n" +
                  ":waifu2x_run\r\n" +
                  "setlocal\r\n" +
@@ -1263,7 +1263,7 @@ namespace waifu2x_chainer_gui
                  "set Image_path=\r\n" +
 
 
-                 "del \"" + waifu2x_bat.ToString() + "\"\r\n" +
+                 "del \"%~dp0" + waifu2x_bat.ToString() + "\"\r\n" +
                  "exit /b\r\n" +
                  "\"\r\n" +
                  ":scale_ratio_set\r\n" +
@@ -1340,10 +1340,10 @@ namespace waifu2x_chainer_gui
                        "cd \"" + param_waifu2x_chainer_dir.ToString() + "\"\r\n" +
                        // waifu2x-chainerがインストールされているかチェックする
                        "Python waifu2x.py -h >nul 2>&1\r\n" +
-                       "if not \"%ERRORLEVEL%\"==\"0\" echo waifu2x-chainer is not installed. && del \"" + waifu2x_bat.ToString() + "\" && exit\r\n" +
+                       "if not \"%ERRORLEVEL%\"==\"0\" echo waifu2x-chainer is not installed. && del \"%~dp0" + waifu2x_bat.ToString() + "\" && exit\r\n" +
                        // ImageMagickがインストールされているかチェックする
                         "magick.exe -h >nul 2>&1\r\n" +
-                        "if not \"%ERRORLEVEL%\"==\"0\" echo ImageMagick 7 is not installed. && del \"" + waifu2x_bat.ToString() + "\" && exit\r\n" +
+                        "if not \"%ERRORLEVEL%\"==\"0\" echo ImageMagick 7 is not installed. && del \"%~dp0" + waifu2x_bat.ToString() + "\" && exit\r\n" +
                         "set \"OutputFolder=" + param_dst.ToString() + "\"\r\n" +
                         //"set OutputFolder=%OutputFolder:\"=%\r\n" +
                         "for %%A IN (\"" + param_src.ToString() + "\") do set \"A=%%~aA\"\r\n" +
@@ -1506,7 +1506,7 @@ namespace waifu2x_chainer_gui
                         "\r\n" +
                         ":end\r\n" +
                         "cls\r\n" +
-                        "del \"" + waifu2x_bat.ToString() + "\"\r\n" +
+                        "del \"%~dp0" + waifu2x_bat.ToString() + "\"\r\n" +
                         "exit /b\r\n"
                    ;
                    System.IO.StreamWriter sw = new System.IO.StreamWriter(
@@ -1714,7 +1714,7 @@ namespace waifu2x_chainer_gui
                  "\r\n" +
                  ":end\r\n" +
                  "cls\r\n" +
-                 "del \"" + waifu2x_bat.ToString() + "\"\r\n" +
+                 "del \"%~dp0" + waifu2x_bat.ToString() + "\"\r\n" +
                  "exit /b\r\n"
             ;
                 System.IO.StreamWriter sw = new System.IO.StreamWriter(
