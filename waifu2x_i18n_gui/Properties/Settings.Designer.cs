@@ -193,7 +193,7 @@ namespace waifu2x_chainer_gui.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool Alphachannel_ImageMagick {
             get {
                 return ((bool)(this["Alphachannel_ImageMagick"]));
