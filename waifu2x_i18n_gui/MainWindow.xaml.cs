@@ -376,7 +376,7 @@ namespace waifu2x_chainer_gui
             string msg =
                 "Multilingual GUI for waifu2x-chainer\n" +
                 "nanashi (2018)\n" +
-                "Version 1.0.2\n" +
+                "Version 1.0.3\n" +
                 "BuildDate: 24 Feb,2018\n" +
                 "License: Do What the Fuck You Want License";
             MessageBox.Show(msg);
@@ -469,6 +469,10 @@ namespace waifu2x_chainer_gui
                                );
                     sw.WriteLine("@echo off");
                     sw.WriteLine("chcp 65001 >nul");
+                    sw.WriteLine("cd \"" + this.txtWaifu2x_chainerPath.Text + "\"");
+                    // waifu2x-chainerがインストールされているかチェックする
+                    sw.WriteLine("Python waifu2x.py -h >nul 2>&1");
+                    sw.WriteLine("if not \"%ERRORLEVEL%\"==\"0\" echo waifu2x-chainer is not installed. && del \"" + waifu2x_bat.ToString() + "\" && exit");
                     // ImageMagickがインストールされているかチェックする
                     sw.WriteLine("magick.exe -h >nul 2>&1");
                     sw.WriteLine("if not \"%ERRORLEVEL%\"==\"0\" echo ImageMagick 7 is not installed. && del \"" + waifu2x_bat.ToString() + "\" && exit");
@@ -1161,6 +1165,10 @@ namespace waifu2x_chainer_gui
                 // Assemble parameters
                 string TextBox1 = "@echo off\r\n" +
                 "chcp 65001 >nul\r\n" +
+                "cd \"" + param_waifu2x_chainer_dir.ToString() + "\"\r\n" +
+                 // waifu2x-chainerがインストールされているかチェックする
+                 "Python waifu2x.py -h >nul 2>&1\r\n" +
+                 "if not \"%ERRORLEVEL%\"==\"0\" echo waifu2x-chainer is not installed. && del \"" + waifu2x_bat.ToString() + "\" && exit\r\n" +
                  // ImageMagickがインストールされているかチェックする
                  "magick.exe -h >nul 2>&1\r\n" +
                  "if not \"%ERRORLEVEL%\"==\"0\" echo ImageMagick 7 is not installed. && del \"" + waifu2x_bat.ToString() + "\" && exit\r\n" +
@@ -1170,7 +1178,6 @@ namespace waifu2x_chainer_gui
                  "FOR %%A IN (" + param_dst.ToString() + ") DO set \"OUTPUT_Name=%%~nA" + param_outformat.ToString() + "\"\r\n" +
                  "FOR %%A IN (" + param_dst.ToString() + ") DO set \"Output_dir=%%~dpA\"\r\n" +
                  // bat共通の処理
-                 "cd \"" + param_waifu2x_chainer_dir.ToString() + "\"\r\n" +
                  "set \"Output_no_overwirit=" + flagOutput_no_overwirit.ToString() + "\"\r\n" +
                  "if \"%Output_no_overwirit%\"==\"True\" if exist \"%Output_dir%%OUTPUT_Name%\" goto waifu2x_run_skip\r\n" +
                  "set \"Temporary_dir=" + param_tempdir.ToString() + "\"\r\n" +
@@ -1330,6 +1337,10 @@ namespace waifu2x_chainer_gui
                     // Setup ProcessStartInfo
                        string TextBox1 = "@echo off\r\n" +
                        "chcp 65001 >nul\r\n" +
+                       "cd \"" + param_waifu2x_chainer_dir.ToString() + "\"\r\n" +
+                       // waifu2x-chainerがインストールされているかチェックする
+                       "Python waifu2x.py -h >nul 2>&1\r\n" +
+                       "if not \"%ERRORLEVEL%\"==\"0\" echo waifu2x-chainer is not installed. && del \"" + waifu2x_bat.ToString() + "\" && exit\r\n" +
                        // ImageMagickがインストールされているかチェックする
                         "magick.exe -h >nul 2>&1\r\n" +
                         "if not \"%ERRORLEVEL%\"==\"0\" echo ImageMagick 7 is not installed. && del \"" + waifu2x_bat.ToString() + "\" && exit\r\n" +
@@ -1371,7 +1382,6 @@ namespace waifu2x_chainer_gui
 
 
                  // bat共通の処理
-                 "cd \"" + param_waifu2x_chainer_dir.ToString() + "\"\r\n" +
                  "set \"Output_no_overwirit=" + flagOutput_no_overwirit.ToString() + "\"\r\n" +
                  "if \"%Output_no_overwirit%\"==\"True\" if exist \"%Output_dir%%OUTPUT_Name%\" goto waifu2x_run_skip\r\n" +
                  "set \"Temporary_dir=" + param_tempdir.ToString() + "\"\r\n" +
