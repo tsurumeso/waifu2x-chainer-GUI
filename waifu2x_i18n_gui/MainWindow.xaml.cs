@@ -630,9 +630,10 @@ namespace waifu2x_chainer_gui
                 Dispatcher.BeginInvoke(new Action(delegate
                 {
                     queueFlag = false;
-                    this.CLIOutput.Clear();
+                    CLIOutput.Focus();
                     this.CLIOutput.AppendText(e.Data);
                     this.CLIOutput.AppendText(Environment.NewLine);
+                    CLIOutput.Select(CLIOutput.Text.Length, 0);
                 }), System.Windows.Threading.DispatcherPriority.ApplicationIdle, null);
             }
             
@@ -865,6 +866,8 @@ namespace waifu2x_chainer_gui
                 Errormessage("Input filename extension specification format is incorrect!");
                 return;
             }
+            // logをクリアする
+            this.CLIOutput.Clear();
 
             // TTAモードの引数を追加する
             param_TTAmode.Clear();
@@ -1505,7 +1508,7 @@ namespace waifu2x_chainer_gui
                         "exit /b\r\n" +
                         "\r\n" +
                         ":end\r\n" +
-                        "cls\r\n" +
+                        "echo progress %ProcessedCount%/%FileCount%\r\n" +
                         "del \"%~dp0" + waifu2x_bat.ToString() + "\"\r\n" +
                         "exit /b\r\n"
                    ;
@@ -1713,7 +1716,7 @@ namespace waifu2x_chainer_gui
                  "exit /b\r\n" +
                  "\r\n" +
                  ":end\r\n" +
-                 "cls\r\n" +
+                 "echo progress %ProcessedCount%/%FileCount%\r\n" +
                  "del \"%~dp0" + waifu2x_bat.ToString() + "\"\r\n" +
                  "exit /b\r\n"
             ;

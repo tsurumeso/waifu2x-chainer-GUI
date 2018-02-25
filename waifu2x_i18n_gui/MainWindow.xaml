@@ -176,6 +176,6 @@
         </TabControl>
         <Button Name="btnRun" Grid.Column="3" Grid.Row="4" MaxHeight="240" Padding="5" Content="{DynamicResource ResourceKey=Main_btnRun}" Click="OnRun"></Button>
         <Button Name="btnAbort" Grid.Column="2" Grid.Row="4" MaxHeight="240" Padding="5" IsEnabled="False" Content="{DynamicResource ResourceKey=Main_btnAbort}" Click="OnAbort"></Button>
-        <TextBox Name="CLIOutput" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="4" MinHeight="60" MinWidth="512" MaxWidth="640" Margin="3,3,0,3" Padding="3" Background="White" IsReadOnly="False" TextWrapping="Wrap"  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">Log</TextBox>
+        <TextBox Name="CLIOutput" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="4" MinHeight="60" MaxHeight="60" MinWidth="640" MaxWidth="640" Margin="3,3,0,3" Padding="3" Background="White" IsReadOnly="False" TextWrapping="Wrap"  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">Log</TextBox>
     </Grid>
 </Window>
