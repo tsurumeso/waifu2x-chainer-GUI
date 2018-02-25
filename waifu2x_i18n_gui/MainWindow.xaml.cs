@@ -376,8 +376,8 @@ namespace waifu2x_chainer_gui
             string msg =
                 "Multilingual GUI for waifu2x-chainer\n" +
                 "nanashi (2018)\n" +
-                "Version 1.0.4\n" +
-                "BuildDate: 24 Feb,2018\n" +
+                "Version 1.0.5\n" +
+                "BuildDate: 25 Feb,2018\n" +
                 "License: Do What the Fuck You Want License";
             MessageBox.Show(msg);
         }
@@ -473,8 +473,8 @@ namespace waifu2x_chainer_gui
                     // waifu2x-chainerがインストールされているかチェックする
                     sw.WriteLine("Python waifu2x.py -h >nul 2>&1");
                     sw.WriteLine("if not \"%ERRORLEVEL%\"==\"0\" echo waifu2x-chainer is not installed. && del \"%~dp0" + waifu2x_bat.ToString() + "\" && exit");
-                    // ImageMagickがインストールされているかチェックする
-                    sw.WriteLine("convert.exe -version >nul 2>&1");
+                    // ImageMagick 6がインストールされているかチェックする
+                    sw.WriteLine("convert.exe -version | find \"ImageMagick 6\" >nul 2>&1");
                     sw.WriteLine("if not \"%ERRORLEVEL%\"==\"0\" echo ImageMagick 6 is not installed. && del \"%~dp0" + waifu2x_bat.ToString() + "\" && exit");
                     sw.WriteLine("set \"ProcessedCount=0\"");
                     FileCount = 0;
@@ -664,7 +664,12 @@ namespace waifu2x_chainer_gui
                 //throw;
             }
 
-            
+            if (waifu2x_bat.ToString() != "")
+            {
+                if (File.Exists(waifu2x_bat.ToString()))
+                { System.IO.File.Delete(@waifu2x_bat.ToString()); }
+            }
+
             pHandle.Close();
             Dispatcher.BeginInvoke(new Action(delegate
             {
@@ -1172,8 +1177,8 @@ namespace waifu2x_chainer_gui
                  // waifu2x-chainerがインストールされているかチェックする
                  "Python waifu2x.py -h >nul 2>&1\r\n" +
                  "if not \"%ERRORLEVEL%\"==\"0\" echo waifu2x-chainer is not installed. && del \"%~dp0" + waifu2x_bat.ToString() + "\" && exit\r\n" +
-                 // ImageMagickがインストールされているかチェックする
-                 "convert.exe -version >nul 2>&1\r\n" +
+                 // ImageMagick 6がインストールされているかチェックする
+                 "convert.exe -version | find \"ImageMagick 6\" >nul 2>&1\r\n" +
                  "if not \"%ERRORLEVEL%\"==\"0\" echo ImageMagick 6 is not installed. && del \"%~dp0" + waifu2x_bat.ToString() + "\" && exit\r\n" +
                  "set Image_path=\"" + param_src.ToString() + "\"\r\n" +
                  ":waifu2x_run\r\n" +
@@ -1344,8 +1349,8 @@ namespace waifu2x_chainer_gui
                        // waifu2x-chainerがインストールされているかチェックする
                        "Python waifu2x.py -h >nul 2>&1\r\n" +
                        "if not \"%ERRORLEVEL%\"==\"0\" echo waifu2x-chainer is not installed. && del \"%~dp0" + waifu2x_bat.ToString() + "\" && exit\r\n" +
-                        // ImageMagickがインストールされているかチェックする
-                        "convert.exe -version >nul 2>&1\r\n" +
+                        // ImageMagick 6がインストールされているかチェックする
+                        "convert.exe -version | find \"ImageMagick 6\" >nul 2>&1\r\n" +
                         "if not \"%ERRORLEVEL%\"==\"0\" echo ImageMagick 6 is not installed. && del \"%~dp0" + waifu2x_bat.ToString() + "\" && exit\r\n" +
                         "set \"OutputFolder=" + param_dst.ToString() + "\"\r\n" +
                         //"set OutputFolder=%OutputFolder:\"=%\r\n" +
