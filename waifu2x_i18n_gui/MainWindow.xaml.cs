@@ -194,6 +194,7 @@ namespace waifu2x_chainer_gui
         public static StringBuilder flagOutput_no_overwirit = new StringBuilder("");
 
         public static bool DandD_Mode = false;
+        public static bool EventHandler_Flag = false;
         public static int FileCount = (0);
 
         //public static StringBuilder param_tta = new StringBuilder("-t 0");
@@ -625,11 +626,11 @@ namespace waifu2x_chainer_gui
 
                 console_buffer.Append(e.Data);
                 console_buffer.Append(Environment.NewLine);
-                if (queueFlag) return;
-                queueFlag = true;
+                // if (queueFlag) return;
+                // queueFlag = true;
                 Dispatcher.BeginInvoke(new Action(delegate
                 {
-                    queueFlag = false;
+                    // queueFlag = false;
                     CLIOutput.Focus();
                     this.CLIOutput.AppendText(e.Data);
                     this.CLIOutput.AppendText(Environment.NewLine);
@@ -1326,11 +1327,15 @@ namespace waifu2x_chainer_gui
                     psinfo.WindowStyle = ProcessWindowStyle.Hidden;
                     pHandle.StartInfo = psinfo;
                     pHandle.EnableRaisingEvents = true;
-                    pHandle.OutputDataReceived += new DataReceivedEventHandler(OnConsoleDataRecv);
-                    //pHandle.ErrorDataReceived += new DataReceivedEventHandler(OnConsoleDataRecv);
-                    pHandle.Exited += new EventHandler(OnProcessExit);
+                    if (EventHandler_Flag == false)
+                    {
+                        pHandle.OutputDataReceived += new DataReceivedEventHandler(OnConsoleDataRecv);
+                        // pHandle.ErrorDataReceived += new DataReceivedEventHandler(OnConsoleErrorDataRecv);
+                        pHandle.Exited += new EventHandler(OnProcessExit);
+                        EventHandler_Flag = true;
+                    }
 
-                // Starts working
+                    // Starts working
                     console_buffer.Clear();
 
 
@@ -1536,10 +1541,14 @@ namespace waifu2x_chainer_gui
                     psinfo.WindowStyle = ProcessWindowStyle.Hidden;
                     pHandle.StartInfo = psinfo;
                     pHandle.EnableRaisingEvents = true;
-                    pHandle.OutputDataReceived += new DataReceivedEventHandler(OnConsoleDataRecv);
-                    //pHandle.ErrorDataReceived += new DataReceivedEventHandler(OnConsoleDataRecv);
-                    pHandle.Exited += new EventHandler(OnProcessExit);
 
+                    if (EventHandler_Flag == false)
+                    {
+                        pHandle.OutputDataReceived += new DataReceivedEventHandler(OnConsoleDataRecv);
+                        // pHandle.ErrorDataReceived += new DataReceivedEventHandler(OnConsoleErrorDataRecv);
+                        pHandle.Exited += new EventHandler(OnProcessExit);
+                        EventHandler_Flag = true;
+                    }
                     console_buffer.Clear();
                     //console_buffer.Append(full_param);
                     //console_buffer.Append("\n");
@@ -1744,9 +1753,13 @@ namespace waifu2x_chainer_gui
                 psinfo.WindowStyle = ProcessWindowStyle.Hidden;
                 pHandle.StartInfo = psinfo;
                 pHandle.EnableRaisingEvents = true;
-                pHandle.OutputDataReceived += new DataReceivedEventHandler(OnConsoleDataRecv);
-                //pHandle.ErrorDataReceived += new DataReceivedEventHandler(OnConsoleDataRecv);
-                pHandle.Exited += new EventHandler(OnProcessExit);
+                if (EventHandler_Flag == false)
+                {
+                    pHandle.OutputDataReceived += new DataReceivedEventHandler(OnConsoleDataRecv);
+                    // pHandle.ErrorDataReceived += new DataReceivedEventHandler(OnConsoleErrorDataRecv);
+                    pHandle.Exited += new EventHandler(OnProcessExit);
+                    EventHandler_Flag = true;
+                }
 
                 console_buffer.Clear();
                 //console_buffer.Append(full_param);
@@ -1774,6 +1787,7 @@ namespace waifu2x_chainer_gui
                 this.CLIOutput.Clear();
                 this.CLIOutput.Text = "BeginOutputReadLine crashed...";
             }
+
             //pHandle.BeginErrorReadLine();
             //MessageBox.Show("Some parameters do not mix well and crashed...");
 
