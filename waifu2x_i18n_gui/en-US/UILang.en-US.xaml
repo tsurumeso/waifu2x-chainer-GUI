@@ -12,9 +12,6 @@
     <!-- Tab:IO -->
     <sys:String x:Key="Main_IO_SrcPath">Source:</sys:String>
     <sys:String x:Key="Main_IO_DstPath">Destination:</sys:String>
-    <sys:String x:Key="Main_IO_InFiletype">Input file types:</sys:String>
-    <sys:String x:Key="Main_IO_OutFiletype">Output extension:</sys:String>
-    <sys:String x:Key="Main_IO_OutFilequality">Output quality:</sys:String>
     <sys:String x:Key="Main_IO_btnSrc">Choose Src</sys:String>
     <sys:String x:Key="Main_IO_SrcClear">Clear</sys:String>
     <sys:String x:Key="Main_IO_btnDst">Choose Dst</sys:String>
@@ -27,7 +24,6 @@
     <sys:String x:Key="Main_Mode_Set_NoiseScale">Denoise &amp; Magnify</sys:String>
     <sys:String x:Key="Main_Mode_Set_Scale">Magnify only</sys:String>
     <sys:String x:Key="Main_Mode_Set_Noise">Denoise only</sys:String>
-    <sys:String x:Key="Main_Mode_Set_AutoScale">Magnify &amp; Denoise(jpg only)</sys:String>
     <sys:String x:Key="Main_Mode_Mag">_Magnification (1.0~10.0):</sys:String>
     <sys:String x:Key="Main_Mode_output_width">Set trans width:</sys:String>
     <sys:String x:Key="Main_Mode_output_height">Set trans height:</sys:String>
@@ -38,23 +34,17 @@
     <sys:String x:Key="Main_Mode_Denoise_2">Level 2</sys:String>
     <sys:String x:Key="Main_Mode_Denoise_3">Level 3</sys:String>
     <sys:String x:Key="Main_Mode_Arch">Model</sys:String>
-    <sys:String x:Key="Main_Mode_Arch_RGB">2-D illust (RGB Model)</sys:String>
-    <sys:String x:Key="Main_Mode_Arch_UpRGB">2-D illust (UpRGB Model)</sys:String>
-    <sys:String x:Key="Main_Mode_Arch_ResRGB">2-D illust (ResRGB Model)</sys:String>
+    <sys:String x:Key="Main_Mode_Arch_RGB">2-D illust (vgg7 Model)</sys:String>
+    <sys:String x:Key="Main_Mode_Arch_UpRGB">2-D illust (upconv7 Model)</sys:String>
+    <sys:String x:Key="Main_Mode_Arch_ResRGB">2-D illust (resnet10 Model)</sys:String>
     <!-- Tabs -->
     <sys:String x:Key="MainTab_Mode">Mode</sys:String>
     <!-- Tab:Mode -->
     <sys:String x:Key="Main_Mode_waifu2x_chainerPath">waifu2x-chainer path:</sys:String>
-    <sys:String x:Key="Main_Mode_TempPath">Temporary folder:</sys:String>
-    <sys:String x:Key="Main_Mode_Alphachannel_background">Alpha channel background color:</sys:String>
     <sys:String x:Key="Main_Device_gp">Device</sys:String>
     <sys:String x:Key="Main_Device_Compute">GPU ID</sys:String>
     <sys:String x:Key="Main_checkTTAmode">TTA Mode</sys:String>
-    <sys:String x:Key="Main_checkAspect_ratio_keep">keep aspect ratio</sys:String>
-    <sys:String x:Key="Main_checkDandD">Start conversion immediately after drag and drop</sys:String>
-    <sys:String x:Key="Main_checkAlphachannel_ImageMagick">Separate alpha channels with ImageMagick</sys:String>
     <sys:String x:Key="Main_checkStore_output_dir">store the last output path</sys:String>
-    <sys:String x:Key="Main_checkOutput_no_overwirit">Output files No overwrite</sys:String>
     <sys:String x:Key="Main_checkSoundBeep">Play beep after processing</sys:String>
     <sys:String x:Key="Main_Device_Block">Block Size</sys:String>
     <!-- Run button -->

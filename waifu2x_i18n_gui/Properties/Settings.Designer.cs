@@ -73,18 +73,6 @@ namespace waifu2x_chainer_gui.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("*.jpg *.jpeg *.png *.bmp *.tif *.tiff")]
-        public string informat {
-            get {
-                return ((string)(this["informat"]));
-            }
-            set {
-                this["informat"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Unspecified")]
         public string Device_ID {
             get {
@@ -104,18 +92,6 @@ namespace waifu2x_chainer_gui.Properties {
             }
             set {
                 this["mode"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool DandD_check {
-            get {
-                return ((bool)(this["DandD_check"]));
-            }
-            set {
-                this["DandD_check"] = value;
             }
         }
         
@@ -181,42 +157,6 @@ namespace waifu2x_chainer_gui.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public double OutQuality {
-            get {
-                return ((double)(this["OutQuality"]));
-            }
-            set {
-                this["OutQuality"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool Alphachannel_ImageMagick {
-            get {
-                return ((bool)(this["Alphachannel_ImageMagick"]));
-            }
-            set {
-                this["Alphachannel_ImageMagick"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("%TEMP%")]
-        public string temporary_dir {
-            get {
-                return ((string)(this["temporary_dir"]));
-            }
-            set {
-                this["temporary_dir"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("null")]
         public string output_dir {
             get {
@@ -236,30 +176,6 @@ namespace waifu2x_chainer_gui.Properties {
             }
             set {
                 this["store_output_dir"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool output_no_overwirit {
-            get {
-                return ((bool)(this["output_no_overwirit"]));
-            }
-            set {
-                this["output_no_overwirit"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public string Alphachannel_background {
-            get {
-                return ((string)(this["Alphachannel_background"]));
-            }
-            set {
-                this["Alphachannel_background"] = value;
             }
         }
         

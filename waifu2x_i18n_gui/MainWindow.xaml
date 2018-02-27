@@ -43,7 +43,7 @@
         </Menu>
         <TabControl Grid.Row="1" Grid.RowSpan="3" Grid.ColumnSpan="4" >
             <TabItem Header="{DynamicResource ResourceKey=MainTab_IO}">
-                <StackPanel Orientation="Vertical" Margin="3" MinWidth="800" MinHeight="330">
+                <StackPanel Orientation="Vertical" Margin="3" MinWidth="800" MinHeight="250">
                     <StackPanel Orientation="Horizontal" Margin="3" HorizontalAlignment="Stretch">
                         <Label Target="{Binding ElementName=txtSrcPath}" HorizontalAlignment="Left" Content="{DynamicResource ResourceKey=Main_IO_SrcPath}"></Label>
                         <TextBox Name="txtSrcPath" MinWidth="600" MaxWidth="600" AllowDrop="True" PreviewDragOver="On_DragOver" PreviewDragEnter="On_DragOver" PreviewDrop="On_SrcDrop" ToolTip="{DynamicResource ResourceKey=Main_IO_Src_Tooltip}"></TextBox>
@@ -55,25 +55,6 @@
                         <TextBox Name="txtDstPath" MinWidth="600" MaxWidth="600" AllowDrop="True" PreviewDragEnter="On_DragOver" PreviewDragOver="On_DragOver" PreviewDrop="On_DstDrop" ToolTip="{DynamicResource ResourceKey=Main_IO_Dst_Tooltip}"></TextBox>
                         <Button Name="btnOpenDst" HorizontalAlignment="Right" Content="{DynamicResource ResourceKey=Main_IO_btnDst}" Click="OnBtnDst"></Button>
                         <Button Name="btnDstClear" HorizontalAlignment="Right" Content="{DynamicResource ResourceKey=Main_IO_DstClear}" Click="OnDstClear"></Button>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="3" HorizontalAlignment="Stretch">
-                        <Label Target="{Binding ElementName=txtExt}" HorizontalAlignment="Left" Content="{DynamicResource ResourceKey=Main_IO_InFiletype}"></Label>
-                        <TextBox Name="txtExt" MinWidth="300" MaxWidth="300">*.jpg *.jpeg *.png *.bmp *.tif *.tiff</TextBox>
-                        <Button Name="btnExtReset" HorizontalAlignment="Right" Content="{DynamicResource ResourceKey=Main_IO_btnReset}" Click="OnFormatReset"></Button>
-                        <Label Target="{Binding ElementName=txtOutExt}" HorizontalAlignment="Left" Content="{DynamicResource ResourceKey=Main_IO_OutFiletype}"></Label>
-                        <ComboBox Name="txtOutExt" MinWidth="50" HorizontalAlignment="Stretch" SelectedValuePath="Tag">
-                            <ComboBoxItem Tag="0" Content=".png" IsSelected="True"/>
-                            <ComboBoxItem Tag="1" Content=".jpg"/>
-                            <ComboBoxItem Tag="2" Content=".jp2"/>
-                            <ComboBoxItem Tag="3" Content=".webp"/>
-                            <ComboBoxItem Tag="4" Content=".flif"/>
-                            <ComboBoxItem Tag="5" Content=".bmp"/>
-                            <ComboBoxItem Tag="6" Content=".tif"/>
-                            <ComboBoxItem Tag="7" Content=".tga"/>
-                            <ComboBoxItem Tag="8" Content=".ppm"/>
-                        </ComboBox>
-                        <Label Target="{Binding ElementName=txtOutQuality}" HorizontalAlignment="Left" Content="{DynamicResource ResourceKey=Main_IO_OutFilequality}"></Label>
-                        <TextBox Name="txtOutQuality" MinWidth="50" MaxWidth="50"  HorizontalAlignment="Stretch" Text=""></TextBox>
                     </StackPanel>
                     <Label Target="{Binding ElementName=slider_zoom}" Content="{DynamicResource ResourceKey=Main_Mode_Mag}"></Label>
                     <StackPanel Orientation="Horizontal" Margin="3" HorizontalAlignment="Stretch">
@@ -95,10 +76,9 @@
                     <StackPanel Orientation="Horizontal" Margin="3">
                         <GroupBox Name="gpMode" Header="{DynamicResource ResourceKey=Main_Mode_Set}" Padding="3" Margin="3" Height="130">
                             <StackPanel Orientation="Vertical" Margin="3">
-                                <RadioButton Tag="noise_scale" Name="btnModeNoiseScale" Margin="2" Content="{DynamicResource ResourceKey=Main_Mode_Set_NoiseScale}" Checked="OnSetModeChecked"></RadioButton>
-                                <RadioButton Tag="scale" Name="btnModeScale" Margin="2" Content="{DynamicResource ResourceKey=Main_Mode_Set_Scale}" Checked="OnSetModeChecked"></RadioButton>
-                                <RadioButton Tag="noise" Name="btnModeNoise" Margin="2" Content="{DynamicResource ResourceKey=Main_Mode_Set_Noise}" Checked="OnSetModeChecked"></RadioButton>
-                                <RadioButton Tag="auto_scale" Name="btnModeAutoScale" Margin="2" Content="{DynamicResource ResourceKey=Main_Mode_Set_AutoScale}" Checked="OnSetModeChecked"></RadioButton>
+                                <RadioButton Tag="-m noise_scale" Name="btnModeNoiseScale" Margin="2" Content="{DynamicResource ResourceKey=Main_Mode_Set_NoiseScale}" Checked="OnSetModeChecked"></RadioButton>
+                                <RadioButton Tag="-m scale" Name="btnModeScale" Margin="2" Content="{DynamicResource ResourceKey=Main_Mode_Set_Scale}" Checked="OnSetModeChecked"></RadioButton>
+                                <RadioButton Tag="-m noise" Name="btnModeNoise" Margin="2" Content="{DynamicResource ResourceKey=Main_Mode_Set_Noise}" Checked="OnSetModeChecked"></RadioButton>
                             </StackPanel>
                         </GroupBox>
                         <GroupBox Name="gpDenoise" Header="{DynamicResource ResourceKey=Main_Mode_Denoise}" Padding="3" Margin="3" Height="130">
@@ -131,7 +111,7 @@
                                     <Label Target="{Binding ElementName=txtDevice}" HorizontalAlignment="Left" Content="{DynamicResource ResourceKey=Main_Device_Compute}"></Label>
                                     <TextBox Name="txtDevice" HorizontalAlignment="Right" MinWidth="50" MaxWidth="50"  Margin="1" MaxHeight="20" Text="" ></TextBox>
                                 </StackPanel>
-                                <CheckBox Name="checkTTAmode" Margin="3" Content="{DynamicResource ResourceKey=Main_checkTTAmode}" ></CheckBox>
+                                <CheckBox Name="cbTTA" Content="TTA Mode"  Margin="3" Tag="-t" ToolTip="Increase PSNR by ~0.15 but 8 times slower"></CheckBox>
                             </StackPanel>
                         </GroupBox>
                     </StackPanel>
@@ -145,29 +125,7 @@
                                 <Label Target="{Binding ElementName=txtWaifu2x_chainerPath}" HorizontalAlignment="Left" Content="{DynamicResource ResourceKey=Main_Mode_waifu2x_chainerPath}"></Label>
                                 <TextBox Name="txtWaifu2x_chainerPath" MinWidth="600" MaxWidth="600" AllowDrop="True" PreviewDragOver="On_DragOver" PreviewDragEnter="On_DragOver" PreviewDrop="On_waifu2x_chainerDrop"></TextBox>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <Label Target="{Binding ElementName=txtTempPath}" HorizontalAlignment="Left" Content="{DynamicResource ResourceKey=Main_Mode_TempPath}"></Label>
-                                <TextBox Name="txtTempPath" MinWidth="600" MaxWidth="600" AllowDrop="True" PreviewDragOver="On_DragOver" PreviewDragEnter="On_DragOver" PreviewDrop="On_TempDrop"></TextBox>
-                            </StackPanel>
-                            <CheckBox Name="checkDandD" Margin="3" Content="{DynamicResource ResourceKey=Main_checkDandD}" ></CheckBox>
-                            <CheckBox Name="checkAspect_ratio_keep" Margin="3" Content="{DynamicResource ResourceKey=Main_checkAspect_ratio_keep}" ></CheckBox>
-                            <CheckBox Name="checkAlphachannel_ImageMagick" Margin="3" Content="{DynamicResource ResourceKey=Main_checkAlphachannel_ImageMagick}" ></CheckBox>
-                            <StackPanel Orientation="Horizontal">
-                                <Label Target="{Binding ElementName=ComboAlphachannel_background}" HorizontalAlignment="Left" Content="{DynamicResource ResourceKey=Main_Mode_Alphachannel_background}"></Label>
-                                <ComboBox Name="ComboAlphachannel_background" MinWidth="50" HorizontalAlignment="Stretch" SelectedValuePath="Tag">
-                                    <ComboBoxItem Tag="0" Content="none" IsSelected="True"/>
-                                    <ComboBoxItem Tag="1" Content="white"/>
-                                    <ComboBoxItem Tag="2" Content="black"/>
-                                    <ComboBoxItem Tag="3" Content="red"/>
-                                    <ComboBoxItem Tag="4" Content="green"/>
-                                    <ComboBoxItem Tag="5" Content="blue"/>
-                                    <ComboBoxItem Tag="6" Content="cyan"/>
-                                    <ComboBoxItem Tag="7" Content="magenta"/>
-                                    <ComboBoxItem Tag="8" Content="yellow"/>
-                                </ComboBox>
-                            </StackPanel>
                             <CheckBox Name="checkStore_output_dir" Margin="3" Content="{DynamicResource ResourceKey=Main_checkStore_output_dir}" ></CheckBox>
-                            <CheckBox Name="checkOutput_no_overwirit" Margin="3" Content="{DynamicResource ResourceKey=Main_checkOutput_no_overwirit}" ></CheckBox>
                             <CheckBox Name="checkSoundBeep" Margin="3" Content="{DynamicResource ResourceKey=Main_checkSoundBeep}" ></CheckBox>
                         </StackPanel>
                     </GroupBox>
@@ -176,6 +134,6 @@
         </TabControl>
         <Button Name="btnRun" Grid.Column="3" Grid.Row="4" MaxHeight="240" Padding="5" Content="{DynamicResource ResourceKey=Main_btnRun}" Click="OnRun"></Button>
         <Button Name="btnAbort" Grid.Column="2" Grid.Row="4" MaxHeight="240" Padding="5" IsEnabled="False" Content="{DynamicResource ResourceKey=Main_btnAbort}" Click="OnAbort"></Button>
-        <TextBox Name="CLIOutput" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="4" MinHeight="85" MaxHeight="85" MinWidth="640" MaxWidth="640" Margin="3,3,0,3" Padding="3" Background="White" IsReadOnly="False" TextWrapping="Wrap"  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">Log</TextBox>
+        <TextBox Name="CLIOutput" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="4" MinHeight="120" MaxHeight="120" MinWidth="640" MaxWidth="640" Margin="3,3,0,3" Padding="3" Background="White" IsReadOnly="False" TextWrapping="Wrap"  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">Log</TextBox>
     </Grid>
 </Window>
