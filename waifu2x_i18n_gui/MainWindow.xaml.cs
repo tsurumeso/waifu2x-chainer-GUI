@@ -1199,7 +1199,7 @@ namespace waifu2x_chainer_gui
                  "if not \"%output_width%\"==\"\" if \"%output_height%\"==\"\" set \"resize_argument=-resize %output_width%x\"\r\n" +
                  "if \"%output_width%\"==\"\" if not \"%output_height%\"==\"\" set \"resize_argument=-resize x%output_height%\"\r\n" +
                  "FOR %%A IN (%Image_path%) DO set \"Image_ext=%%~xA\"\r\n" +
-                 "if \"%Alphachannel_ImageMagick%\"==\"True\" if /i \"%Image_ext%\"==\".png\" identify.exe -format \"%%A\" %Image_path% | find \"Blend\"> NUL && set image_alpha=true\r\n" +
+                 "if \"%Alphachannel_ImageMagick%\"==\"True\" if /i \"%Image_ext%\"==\".png\" identify.exe -format \"%%A\" %Image_path% | FINDSTR \"True Blend\" >NUL && set image_alpha=true\r\n" +
                  "if not \"" + param_mode.ToString() + "\"==\"noise\" if not \"%output_width%%output_height%\"==\"\" (\r\n" +
                  "   for /f \"delims=\" %%a in ('identify.exe -format \"%%w\" %Image_path%') do set \"image_width=%%a\"\r\n" +
                  "   for /f \"delims=\" %%a in ('identify.exe -format \"%%h\" %Image_path%') do set \"image_height=%%a\"\r\n" +
@@ -1407,7 +1407,7 @@ namespace waifu2x_chainer_gui
                  "if not \"%output_width%\"==\"\" if \"%output_height%\"==\"\" set \"resize_argument=-resize %output_width%x\"\r\n" +
                  "if \"%output_width%\"==\"\" if not \"%output_height%\"==\"\" set \"resize_argument=-resize x%output_height%\"\r\n" +
                  "FOR %%A IN (%Image_path%) DO set \"Image_ext=%%~xA\"\r\n" +
-                 "if \"%Alphachannel_ImageMagick%\"==\"True\" if /i \"%Image_ext%\"==\".png\" identify.exe -format \"%%A\" %Image_path% | find \"Blend\"> NUL && set image_alpha=true\r\n" +
+                 "if \"%Alphachannel_ImageMagick%\"==\"True\" if /i \"%Image_ext%\"==\".png\" identify.exe -format \"%%A\" %Image_path% | FINDSTR \"True Blend\" >NUL && set image_alpha=true\r\n" +
                  "if not \"" + param_mode.ToString() + "\"==\"noise\" if not \"%output_width%%output_height%\"==\"\" (\r\n" +
                  "   for /f \"delims=\" %%a in ('identify.exe -format \"%%w\" %Image_path%') do set \"image_width=%%a\"\r\n" +
                  "   for /f \"delims=\" %%a in ('identify.exe -format \"%%h\" %Image_path%') do set \"image_height=%%a\"\r\n" +
@@ -1619,7 +1619,7 @@ namespace waifu2x_chainer_gui
                  "if not \"%output_width%\"==\"\" if \"%output_height%\"==\"\" set \"resize_argument=-resize %output_width%x\"\r\n" +
                  "if \"%output_width%\"==\"\" if not \"%output_height%\"==\"\" set \"resize_argument=-resize x%output_height%\"\r\n" +
                  "FOR %%A IN (%Image_path%) DO set \"Image_ext=%%~xA\"\r\n" +
-                 "if \"%Alphachannel_ImageMagick%\"==\"True\" if /i \"%Image_ext%\"==\".png\" identify.exe -format \"%%A\" %Image_path% | find \"Blend\"> NUL && set image_alpha=true\r\n" +
+                 "if \"%Alphachannel_ImageMagick%\"==\"True\" if /i \"%Image_ext%\"==\".png\" identify.exe -format \"%%A\" %Image_path% | FINDSTR \"True Blend\" >NUL && set image_alpha=true\r\n" +
                  "if not \"" + param_mode.ToString() + "\"==\"noise\" if not \"%output_width%%output_height%\"==\"\" (\r\n" +
                  "   for /f \"delims=\" %%a in ('identify.exe -format \"%%w\" %Image_path%') do set \"image_width=%%a\"\r\n" +
                  "   for /f \"delims=\" %%a in ('identify.exe -format \"%%h\" %Image_path%') do set \"image_height=%%a\"\r\n" +
