@@ -642,6 +642,10 @@ namespace waifu2x_chainer_gui
             if (param_arch.ToString().Trim() == "-a 2")
             { param_model.Append("-d \"" + this.txtWaifu2x_chainerPath.Text + "\\models\\resnet10\""); }
 
+            param_mag.Clear();
+            param_mag.Append("-s ");
+            param_mag.Append(this.slider_value.Text);
+
             // 数字が入力されてなかったらクリアする
 
             param_width.Clear();
@@ -655,7 +659,7 @@ namespace waifu2x_chainer_gui
             } else
             {
                 param_mag.Clear();
-                param_width.Append("--width " + this.output_width.Text);
+                param_width.Append("-W " + this.output_width.Text);
             }
 
             param_height.Clear();
@@ -668,7 +672,7 @@ namespace waifu2x_chainer_gui
             } else
             {
                 param_mag.Clear();
-                param_height.Append("--height " + this.output_height.Text);
+                param_height.Append("-H " + this.output_height.Text);
             }
 
             if (System.Text.RegularExpressions.Regex.IsMatch(
@@ -720,9 +724,6 @@ namespace waifu2x_chainer_gui
 
             // Set scale ratio
 
-            param_mag.Clear();
-            param_mag.Append("-s ");
-            param_mag.Append(this.slider_value.Text);
             param_denoise2.Clear();
             param_denoise2.Append(param_denoise.ToString());
 
@@ -752,6 +753,7 @@ namespace waifu2x_chainer_gui
                 param_width.ToString(),
                 param_height.ToString(),
                 param_denoise2.ToString(),
+                param_arch.ToString(),
                 param_model.ToString(),
                 param_block.ToString(),
                 param_device.ToString(),
@@ -818,7 +820,7 @@ namespace waifu2x_chainer_gui
             catch (Exception)
             {
                 this.CLIOutput.Clear();
-                this.CLIOutput.Text = "BeginOutputReadLine crashed...";
+                this.CLIOutput.Text = "BeginErrorReadLine crashed...";
             }
 
             //pHandle.BeginErrorReadLine();

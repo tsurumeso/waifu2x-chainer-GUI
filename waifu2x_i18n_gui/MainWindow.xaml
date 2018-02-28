@@ -117,12 +117,12 @@
                     </StackPanel>
                 </StackPanel>
             </TabItem>
-            <TabItem Header="{DynamicResource ResourceKey=MainTab_Mode}">
+            <TabItem Header="{DynamicResource ResourceKey=MainTab_Preferences}">
                 <StackPanel Orientation="Vertical" Margin="3" MinWidth="800" MinHeight="330">
                     <GroupBox Name="gpDandD" Padding="3" Margin="3">
                         <StackPanel Orientation="Vertical" Margin="3">
                             <StackPanel Orientation="Horizontal">
-                                <Label Target="{Binding ElementName=txtWaifu2x_chainerPath}" HorizontalAlignment="Left" Content="{DynamicResource ResourceKey=Main_Mode_waifu2x_chainerPath}"></Label>
+                                <Label Target="{Binding ElementName=txtWaifu2x_chainerPath}" HorizontalAlignment="Left" Content="{DynamicResource ResourceKey=Main_Preferences_waifu2x_chainerPath}"></Label>
                                 <TextBox Name="txtWaifu2x_chainerPath" MinWidth="600" MaxWidth="600" AllowDrop="True" PreviewDragOver="On_DragOver" PreviewDragEnter="On_DragOver" PreviewDrop="On_waifu2x_chainerDrop"></TextBox>
                                 <Button Name="btnWaifu2x_chainerPath" Content="browse" HorizontalAlignment="Right" Click="OnWaifu2x_chainerPath"></Button>
                             </StackPanel>
