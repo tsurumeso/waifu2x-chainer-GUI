@@ -146,7 +146,6 @@ namespace waifu2x_chainer_gui
 
         public static StringBuilder param_src= new StringBuilder("");
         public static StringBuilder param_dst = new StringBuilder("");
-        public static StringBuilder param_dst_dd = new StringBuilder("");
         public static StringBuilder param_informat = new StringBuilder("*.jpg *.jpeg *.png *.bmp *.tif *.tiff");
         //public static StringBuilder param_outformat = new StringBuilder("png");
         public static StringBuilder param_mag = new StringBuilder("2");
@@ -694,9 +693,19 @@ namespace waifu2x_chainer_gui
             this.CLIOutput.Clear();
 
             // Set Destination
-            param_dst.Clear();
-            param_dst.Append(this.txtDstPath.Text);
-                    
+            if (this.txtDstPath.Text.Trim() == "")
+            {
+                param_dst.Clear();
+            }
+            else
+            {
+                param_dst.Clear();
+                param_dst.Append("-o ");
+                param_dst.Append("\"");
+                param_dst.Append(this.txtDstPath.Text);
+                param_dst.Append("\"");
+            }
+
             // Set input format
             // param_informat.Clear();
             //param_informat.Append("-l ");
