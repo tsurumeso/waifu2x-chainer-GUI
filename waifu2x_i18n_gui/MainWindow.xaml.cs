@@ -19,6 +19,7 @@ using System.Runtime.CompilerServices;
 using Microsoft.Win32;
 using System.ComponentModel; // CancelEventArgs
 
+using Forms = System.Windows.Forms;
 namespace waifu2x_chainer_gui
 {
     /// <summary>
@@ -342,6 +343,22 @@ namespace waifu2x_chainer_gui
         private void OnDstClear(object sender, RoutedEventArgs e)
         {
             this.txtDstPath.Clear();
+        }
+
+        private void OnWaifu2x_chainerPath(object sender, RoutedEventArgs e)
+        {
+            // フォルダー参照ダイアログのインスタンスを生成
+            var dlg = new Forms.FolderBrowserDialog();
+
+            // 説明文を設定
+            // dlg.Description = "フォルダーを選択してください。";
+
+            // ダイアログを表示
+            if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                // 選択されたフォルダーパスをメッセージボックスに表示
+                this.txtWaifu2x_chainerPath.Text = dlg.SelectedPath;
+            }
         }
 
         private void MenuItem_Style_Click(object sender, RoutedEventArgs e)

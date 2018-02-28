@@ -124,6 +124,7 @@
                             <StackPanel Orientation="Horizontal">
                                 <Label Target="{Binding ElementName=txtWaifu2x_chainerPath}" HorizontalAlignment="Left" Content="{DynamicResource ResourceKey=Main_Mode_waifu2x_chainerPath}"></Label>
                                 <TextBox Name="txtWaifu2x_chainerPath" MinWidth="600" MaxWidth="600" AllowDrop="True" PreviewDragOver="On_DragOver" PreviewDragEnter="On_DragOver" PreviewDrop="On_waifu2x_chainerDrop"></TextBox>
+                                <Button Name="btnWaifu2x_chainerPath" Content="browse" HorizontalAlignment="Right" Click="OnWaifu2x_chainerPath"></Button>
                             </StackPanel>
                             <CheckBox Name="checkStore_output_dir" Margin="3" Content="{DynamicResource ResourceKey=Main_checkStore_output_dir}" ></CheckBox>
                             <CheckBox Name="checkSoundBeep" Margin="3" Content="{DynamicResource ResourceKey=Main_checkSoundBeep}" ></CheckBox>
