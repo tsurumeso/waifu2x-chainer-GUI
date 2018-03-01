@@ -221,12 +221,10 @@ namespace waifu2x_chainer_gui
                Properties.Settings.Default.Device_ID = "Unspecified";
             }
 
-            string param_block_r = param_block.ToString().Replace("-l ", "");
-            Properties.Settings.Default.block_size = param_block_r;
-            
-            string param_denoise_r = param_denoise.ToString().Replace("-n ", "");
-            Properties.Settings.Default.noise_level = param_denoise_r;
-            
+            Properties.Settings.Default.block_size = param_block.ToString().Replace("-l ", "");
+
+            Properties.Settings.Default.noise_level = param_denoise.ToString().Replace("-n ", "");
+
             if (param_arch.ToString().Trim() == "-a 0")
             {Properties.Settings.Default.Arch = "RGB";}
             if (param_arch.ToString().Trim() == "-a 1")
@@ -234,7 +232,7 @@ namespace waifu2x_chainer_gui
             if (param_arch.ToString().Trim() == "-a 2")
             {Properties.Settings.Default.Arch = "ResRGB";}
 
-            Properties.Settings.Default.mode = param_mode.ToString();
+            Properties.Settings.Default.mode = param_mode.ToString().Replace("-m ", "");
 
             Properties.Settings.Default.TTAmode = Convert.ToBoolean(cbTTA.IsChecked);
             Properties.Settings.Default.SoundBeep = Convert.ToBoolean(checkSoundBeep.IsChecked);
@@ -308,8 +306,8 @@ namespace waifu2x_chainer_gui
             string msg =
                 "Multilingual GUI for waifu2x-chainer\n" +
                 "nanashi (2018)\n" +
-                "Version 1.1\n" +
-                "BuildDate: 28 Feb,2018\n" +
+                "Version 1.1.1\n" +
+                "BuildDate: 1 Mar,2018\n" +
                 "License: Do What the Fuck You Want License";
             MessageBox.Show(msg);
         }
