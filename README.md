@@ -2,7 +2,7 @@
 ![aaaaaaaaa](https://user-images.githubusercontent.com/16046279/36768222-6ae7b70a-1c81-11e8-9906-4272ef16ad55.png)
 Multilingual GUI for waifu2x-chainer(https://github.com/tsurumeso/waifu2x-chainer). Localization can be done via user-editable xaml file
 
-forked from https://github.com/f11894/waifu2x-converter_GUI
+forked from https://github.com/MaverickTse/waifu2x_caffe_multilang_gui
 
 ## Installation
 1. You must install [waifu2x-chtainer](https://github.com/tsurumeso/waifu2x-chainer) beforehand.

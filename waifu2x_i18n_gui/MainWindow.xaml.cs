@@ -785,8 +785,12 @@ namespace waifu2x_chainer_gui
             }
             catch (Exception)
             {
-                pHandle.Kill();
-                MessageBox.Show("Some parameters do not mix well and crashed...");
+                try
+                {
+                    pHandle.Kill();
+                }
+                catch (Exception) { /*Nothing*/ }
+                Errormessage("Some parameters do not mix well and crashed...");
                 //throw;
             }
 
@@ -808,7 +812,7 @@ namespace waifu2x_chainer_gui
             catch (Exception)
             {
                 this.CLIOutput.Clear();
-                this.CLIOutput.Text = "BeginOutputReadLine crashed...";
+                this.CLIOutput.Text = "BeginOutputReadLine crashed...\n";
             }
 
             try
@@ -818,7 +822,7 @@ namespace waifu2x_chainer_gui
             catch (Exception)
             {
                 this.CLIOutput.Clear();
-                this.CLIOutput.Text = "BeginErrorReadLine crashed...";
+                this.CLIOutput.Text = "BeginErrorReadLine crashed...\n";
             }
 
             //pHandle.BeginErrorReadLine();
