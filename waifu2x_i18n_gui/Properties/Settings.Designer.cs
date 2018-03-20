@@ -226,5 +226,17 @@ namespace waifu2x_chainer_gui.Properties {
                 this["batch_size"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("RGB")]
+        public string color_mode {
+            get {
+                return ((string)(this["color_mode"]));
+            }
+            set {
+                this["color_mode"] = value;
+            }
+        }
     }
 }

@@ -53,5 +53,8 @@
     <Setting Name="batch_size" Type="System.String" Scope="User">
       <Value Profile="(Default)">8</Value>
     </Setting>
+    <Setting Name="color_mode" Type="System.String" Scope="User">
+      <Value Profile="(Default)">RGB</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

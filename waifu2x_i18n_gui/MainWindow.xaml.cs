@@ -147,6 +147,8 @@ namespace waifu2x_chainer_gui
             cbTTA.IsChecked = Properties.Settings.Default.TTAmode;
             ComboTTA_level.SelectedValue = Properties.Settings.Default.TTA_level;
 
+            ComboColor_Mode.SelectedValue = Properties.Settings.Default.color_mode;
+
             checkSoundBeep.IsChecked = Properties.Settings.Default.SoundBeep;
             checkStore_output_dir.IsChecked = Properties.Settings.Default.store_output_dir;
 
@@ -166,6 +168,7 @@ namespace waifu2x_chainer_gui
         public static StringBuilder param_denoise2 = new StringBuilder("");
         public static StringBuilder param_arch = new StringBuilder("-a 2");
         public static StringBuilder param_model = new StringBuilder("");
+        public static StringBuilder param_color = new StringBuilder("RGB");
         public static StringBuilder param_block = new StringBuilder("-l 64");
         public static StringBuilder param_batch = new StringBuilder("-b 8");
         public static StringBuilder param_mode = new StringBuilder("noise_scale");
@@ -252,6 +255,7 @@ namespace waifu2x_chainer_gui
 
             Properties.Settings.Default.TTAmode = Convert.ToBoolean(cbTTA.IsChecked);
             Properties.Settings.Default.TTA_level = Convert.ToDouble(ComboTTA_level.SelectedValue);
+            Properties.Settings.Default.color_mode = ComboColor_Mode.SelectedValue.ToString();
             Properties.Settings.Default.SoundBeep = Convert.ToBoolean(checkSoundBeep.IsChecked);
             Properties.Settings.Default.store_output_dir = Convert.ToBoolean(checkStore_output_dir.IsChecked);
 
@@ -664,6 +668,9 @@ namespace waifu2x_chainer_gui
             if (param_arch.ToString().Trim() == "-a 2")
             { param_model.Append("-d \"" + this.txtWaifu2x_chainerPath.Text + "\\models\\resnet10\""); }
 
+            param_color.Clear();
+            param_color.Append("-c " + ComboColor_Mode.SelectedValue.ToString().ToLowerInvariant());
+
             param_mag.Clear();
             param_mag.Append("-s ");
             param_mag.Append(this.slider_value.Text);
@@ -780,6 +787,7 @@ namespace waifu2x_chainer_gui
                 param_denoise2.ToString(),
                 param_arch.ToString(),
                 param_model.ToString(),
+                param_color.ToString(),
                 param_block.ToString(),
                 param_batch.ToString(),
                 param_device.ToString(),
