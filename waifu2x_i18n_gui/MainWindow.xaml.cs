@@ -790,7 +790,7 @@ namespace waifu2x_chainer_gui
                     pHandle.Kill();
                 }
                 catch (Exception) { /*Nothing*/ }
-                Errormessage("Some parameters do not mix well and crashed...");
+                Errormessage("Python startup failed.");
                 //throw;
             }
 
