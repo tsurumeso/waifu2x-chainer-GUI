@@ -105,6 +105,14 @@
                                 <RadioButton Tag="-l 256" Name="btn256" Margin="2" Checked="OnBlockChecked">256</RadioButton>
                             </StackPanel>
                         </GroupBox>
+                        <GroupBox Name="gpBatch" Header="{DynamicResource ResourceKey=Main_Device_Batch}" Padding="3" Margin="3">
+                            <StackPanel Orientation="Vertical" Margin="3">
+                                <RadioButton Tag="-b 4" Name="btnBatch4" Margin="2" Checked="OnBatchChecked">4</RadioButton>
+                                <RadioButton Tag="-b 8" Name="btnBatch8" Margin="2" Checked="OnBatchChecked">8</RadioButton>
+                                <RadioButton Tag="-b 16" Name="btnBatch16" Margin="2" Checked="OnBatchChecked">16</RadioButton>
+                                <RadioButton Tag="-b 32" Name="btnBatch32" Margin="2" Checked="OnBatchChecked">32</RadioButton>
+                            </StackPanel>
+                        </GroupBox>
                         <GroupBox Name="gpDevice" Header="{DynamicResource ResourceKey=Main_Device_gp}" Padding="1" Margin="1">
                             <StackPanel Orientation="Vertical" Margin="1">
                                 <StackPanel Orientation="Horizontal" Margin="1">

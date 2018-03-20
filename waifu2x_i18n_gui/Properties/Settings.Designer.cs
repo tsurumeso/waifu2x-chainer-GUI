@@ -214,5 +214,17 @@ namespace waifu2x_chainer_gui.Properties {
                 this["TTA_level"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("8")]
+        public string batch_size {
+            get {
+                return ((string)(this["batch_size"]));
+            }
+            set {
+                this["batch_size"] = value;
+            }
+        }
     }
 }

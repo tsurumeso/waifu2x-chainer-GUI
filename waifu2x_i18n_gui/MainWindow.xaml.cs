@@ -81,6 +81,17 @@ namespace waifu2x_chainer_gui
             if (Properties.Settings.Default.block_size == "32")
             { btn32.IsChecked = true; }
 
+            btnBatch8.IsChecked = true;
+
+            if (Properties.Settings.Default.batch_size == "32")
+            { btnBatch32.IsChecked = true; }
+            if (Properties.Settings.Default.batch_size == "16")
+            { btnBatch16.IsChecked = true; }
+            if (Properties.Settings.Default.batch_size == "8")
+            { btnBatch8.IsChecked = true; }
+            if (Properties.Settings.Default.batch_size == "4")
+            { btnBatch4.IsChecked = true; }
+
             //btnCUDA.IsChecked = true;
             btnDenoise0.IsChecked = true;
 
@@ -156,6 +167,7 @@ namespace waifu2x_chainer_gui
         public static StringBuilder param_arch = new StringBuilder("-a 2");
         public static StringBuilder param_model = new StringBuilder("");
         public static StringBuilder param_block = new StringBuilder("-l 64");
+        public static StringBuilder param_batch = new StringBuilder("-b 8");
         public static StringBuilder param_mode = new StringBuilder("noise_scale");
         public static StringBuilder param_device = new StringBuilder("");
         public static StringBuilder param_tta = new StringBuilder("");
@@ -224,6 +236,8 @@ namespace waifu2x_chainer_gui
             }
 
             Properties.Settings.Default.block_size = param_block.ToString().Replace("-l ", "");
+
+            Properties.Settings.Default.batch_size = param_batch.ToString().Replace("-b ", "");
 
             Properties.Settings.Default.noise_level = param_denoise.ToString().Replace("-n ", "");
 
@@ -490,6 +504,13 @@ namespace waifu2x_chainer_gui
             param_block.Clear();
             RadioButton optsrc= sender as RadioButton;
             param_block.Append(optsrc.Tag.ToString());
+        }
+
+        private void OnBatchChecked(object sender, RoutedEventArgs e)
+        {
+            param_batch.Clear();
+            RadioButton optsrc = sender as RadioButton;
+            param_batch.Append(optsrc.Tag.ToString());
         }
 
         private void OnTTAChecked(object sender, RoutedEventArgs e)
@@ -760,6 +781,7 @@ namespace waifu2x_chainer_gui
                 param_arch.ToString(),
                 param_model.ToString(),
                 param_block.ToString(),
+                param_batch.ToString(),
                 param_device.ToString(),
                 param_tta.ToString());
             // Setup ProcessStartInfo

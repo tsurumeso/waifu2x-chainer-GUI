@@ -50,5 +50,8 @@
     <Setting Name="TTA_level" Type="System.Double" Scope="User">
       <Value Profile="(Default)">8</Value>
     </Setting>
+    <Setting Name="batch_size" Type="System.String" Scope="User">
+      <Value Profile="(Default)">8</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

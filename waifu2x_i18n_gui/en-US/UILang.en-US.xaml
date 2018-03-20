@@ -47,6 +47,7 @@
     <sys:String x:Key="Main_checkStore_output_dir">store the last output path</sys:String>
     <sys:String x:Key="Main_checkSoundBeep">Play beep after processing</sys:String>
     <sys:String x:Key="Main_Device_Block">Block Size</sys:String>
+    <sys:String x:Key="Main_Device_Batch">Batch Size</sys:String>
     <!-- Run button -->
     <sys:String x:Key="Main_btnRun">Run!</sys:String>
     <!-- Abort button -->

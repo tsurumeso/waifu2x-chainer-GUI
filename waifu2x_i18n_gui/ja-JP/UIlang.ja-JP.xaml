@@ -47,6 +47,7 @@
     <sys:String x:Key="Main_checkStore_output_dir">前回出力したパスを記憶する</sys:String>
     <sys:String x:Key="Main_checkSoundBeep">処理が終わったら音を鳴らす</sys:String>
     <sys:String x:Key="Main_Device_Block">分割サイズ</sys:String>
+    <sys:String x:Key="Main_Device_Batch">バッチサイズ</sys:String>
     <!-- Run button -->
     <sys:String x:Key="Main_btnRun">実行</sys:String>
     <!-- Abort button -->
