@@ -826,7 +826,7 @@ namespace waifu2x_chainer_gui
                     pHandle.Kill();
                 }
                 catch (Exception) { /*Nothing*/ }
-                Errormessage("Python startup failed.");
+                Errormessage("Failed to start Python.");
                 //throw;
             }
 
