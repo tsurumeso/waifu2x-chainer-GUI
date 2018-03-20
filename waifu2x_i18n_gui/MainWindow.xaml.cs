@@ -134,6 +134,8 @@ namespace waifu2x_chainer_gui
             }
 
             cbTTA.IsChecked = Properties.Settings.Default.TTAmode;
+            ComboTTA_level.SelectedValue = Properties.Settings.Default.TTA_level;
+
             checkSoundBeep.IsChecked = Properties.Settings.Default.SoundBeep;
             checkStore_output_dir.IsChecked = Properties.Settings.Default.store_output_dir;
 
@@ -235,6 +237,7 @@ namespace waifu2x_chainer_gui
             Properties.Settings.Default.mode = param_mode.ToString().Replace("-m ", "");
 
             Properties.Settings.Default.TTAmode = Convert.ToBoolean(cbTTA.IsChecked);
+            Properties.Settings.Default.TTA_level = Convert.ToDouble(ComboTTA_level.SelectedValue);
             Properties.Settings.Default.SoundBeep = Convert.ToBoolean(checkSoundBeep.IsChecked);
             Properties.Settings.Default.store_output_dir = Convert.ToBoolean(checkStore_output_dir.IsChecked);
 
@@ -689,7 +692,10 @@ namespace waifu2x_chainer_gui
 
             param_tta.Clear();
             if (cbTTA.IsChecked == true)
-            { param_tta.Append("-t"); }
+            {
+                param_tta.Append("-t -T ");
+                param_tta.Append(ComboTTA_level.SelectedValue.ToString());
+            }
 
             // logをクリアする
             this.CLIOutput.Clear();

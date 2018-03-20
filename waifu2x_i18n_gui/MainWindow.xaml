@@ -112,6 +112,11 @@
                                     <TextBox Name="txtDevice" HorizontalAlignment="Right" MinWidth="50" MaxWidth="50"  Margin="1" MaxHeight="20" Text="" ></TextBox>
                                 </StackPanel>
                                 <CheckBox Name="cbTTA" Content="TTA Mode"  Margin="3" Tag="-t" ToolTip="Increase PSNR by ~0.15 but 8 times slower"></CheckBox>
+                                <ComboBox Name="ComboTTA_level" MinWidth="50" HorizontalAlignment="Stretch" SelectedValuePath="Tag">
+                                    <ComboBoxItem Tag="2" Content="TTA level 2"/>
+                                    <ComboBoxItem Tag="4" Content="TTA level 4"/>
+                                    <ComboBoxItem Tag="8" Content="TTA level 8" IsSelected="True"/>
+                                </ComboBox>
                             </StackPanel>
                         </GroupBox>
                     </StackPanel>
