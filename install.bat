@@ -6,7 +6,7 @@ nvcc -V|find "Cuda compilation tools, release 9.0" >nul&&set cuda_ver=90
 nvcc -V|find "Cuda compilation tools, release 9.1" >nul&&set cuda_ver=91
 
 :check_install_python
-python -version >nul 2>&1||goto install_python
+python -h >nul 2>&1||goto install_python
 
 :not_install_python
 python -m pip install -U pip
