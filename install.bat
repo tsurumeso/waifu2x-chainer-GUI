@@ -31,7 +31,7 @@ if "%PROCESSOR_ARCHITECTURE%" EQU "AMD64" (
    set /p conda_URL=<"%TEMP%\anaconda_download.txt"
 )
 del "%TEMP%\anaconda_download.txt"
-echo "%conda_URL%"|findstr /X ".https://repo\.anaconda\.com/archive/Anaconda[^/]*Windows-[^/]*.exe." >nul ||goto error_end
+echo "%conda_URL%"|findstr /X ".https://repo\.anaconda\.com/archive/Anaconda3[^/]*Windows-[^/]*.exe." >nul ||goto error_end
 echo Download Anaconda
 
 echo.
@@ -59,9 +59,10 @@ echo.
 echo Download waifu2x-chainer
 echo.
 curl -H %UA% --retry 5 -o "%TEMP%\waifu2x-chainer.zip" -L "https://github.com/tsurumeso/waifu2x-chainer/archive/master.zip"
-7za.exe x -y -o"C:\" "%TEMP%\waifu2x-chainer.zip"
+7za.exe x -y -o"%TEMP%\" "%TEMP%\waifu2x-chainer.zip"
 del "%TEMP%\waifu2x-chainer.zip"
-move /y "C:\waifu2x-chainer-master" "C:\waifu2x-chainer"
+xcopy /E /I /H /y "%TEMP%\waifu2x-chainer-master" "C:\waifu2x-chainer"
+rd "%TEMP%\waifu2x-chainer-master"
 :end
 cls
 echo successful Installation.
