@@ -67,6 +67,7 @@ rd "%TEMP%\waifu2x-chainer-master"
 cls
 echo successful Installation.
 pause
+exit
 
 :error_end
 echo URL acquisition failed.
