@@ -192,6 +192,9 @@ namespace waifu2x_chainer_gui
         public static bool flagAbort = false;
 
         public static bool queueFlag = false;
+        
+        //Stopwatchオブジェクトを作成する
+        System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
 
         void MainWindow_Closing(object sender, CancelEventArgs e)
         {
@@ -327,8 +330,8 @@ namespace waifu2x_chainer_gui
             string msg =
                 "Multilingual GUI for waifu2x-chainer\n" +
                 "nanashi (2018)\n" +
-                "Version 1.1.2\n" +
-                "BuildDate: 21 Mar,2018\n" +
+                "Version 1.1.4\n" +
+                "BuildDate: 12 Jul,2018\n" +
                 "License: Do What the Fuck You Want License";
             MessageBox.Show(msg);
         }
@@ -565,15 +568,21 @@ namespace waifu2x_chainer_gui
             pHandle.Close();
             Dispatcher.BeginInvoke(new Action(delegate
             {
+                sw.Stop();
+                if (flagAbort == false)
+                {
+                    TimeSpan ts = sw.Elapsed;
+                    this.CLIOutput.AppendText("Processing time: " + ts.ToString(@"hh\:mm\:ss\.fff"));
+                }
+                sw.Reset();
                 if (checkSoundBeep.IsChecked == true) if (this.btnRun.IsEnabled == false)
                 { System.Media.SystemSounds.Beep.Play(); }
                 
                 this.btnAbort.IsEnabled = false;
                 this.btnRun.IsEnabled = true;
                 //this.CLIOutput.Text = console_buffer.ToString();
-
+                flagAbort = false;
             }), System.Windows.Threading.DispatcherPriority.ApplicationIdle, null);
-            flagAbort = false;
         }
 
         private void OnAbort(object sender, RoutedEventArgs e)
@@ -818,6 +827,7 @@ namespace waifu2x_chainer_gui
             {
                 //MessageBox.Show(full_param);
                 bool pState = pHandle.Start();
+                sw.Start();
             }
             catch (Exception)
             {
