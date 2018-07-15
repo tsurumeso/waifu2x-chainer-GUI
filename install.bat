@@ -47,7 +47,7 @@ powershell Start-Process "%TEMP%\Anaconda_Windows-setup.bat" -Wait -Verb runas
 del "%TEMP%\Anaconda_Windows-setup.bat"
 del "%TEMP%\Anaconda_Windows-setup.exe"
 
-cd /d "%UserProfile%\Anaconda3\"
+pushd "%UserProfile%\Anaconda3\"
 call "%UserProfile%\Anaconda3\Scripts\activate.bat" "%UserProfile%\Anaconda3"
 call conda update conda -y
 call conda update --all -y
@@ -56,6 +56,7 @@ if defined cuda_ver call pip install cupy-cuda%cuda_ver%
 call pip install wand
 call pip install pillow
 call "%UserProfile%\Anaconda3\Scripts\deactivate.bat"
+popd
 
 goto install_waifu2x-chainer
 
