@@ -22,20 +22,21 @@ goto install_waifu2x-chainer
 :install_python
 if "%PROCESSOR_ARCHITECTURE%" EQU "x86" (
    curl -H %UA% -s "https://www.anaconda.com/download/#windows" -o "%TEMP%\anaconda_download.txt" >nul 2>&1
-   mfind /W /M "/.*\x22(https:\/\/repo\.anaconda\.com\/archive\/Anaconda3[^\/]*?Windows-x86.exe)\x22.*/$1/" "%TEMP%\anaconda_download.txt" >nul 2>&1 ||goto error_end
+   mfind /W /M "/.*\x22(https:\/\/repo\.anaconda\.com\/archive\/Anaconda3[^\/]*?Windows-x86.exe)\x22.*/$1/" "%TEMP%\anaconda_download.txt" >nul 2>&1 ||call :error_end 1
    set /p conda_URL=<"%TEMP%\anaconda_download.txt"
 )
 if "%PROCESSOR_ARCHITECTURE%" EQU "AMD64" (
    curl -H %UA% -s "https://www.anaconda.com/download/#windows" -o "%TEMP%\anaconda_download.txt" >nul 2>&1
-   mfind /W /M "/.*\x22(https:\/\/repo\.anaconda\.com\/archive\/Anaconda3[^\/]*?Windows-x86_64.exe)\x22.*/$1/" "%TEMP%\anaconda_download.txt" >nul 2>&1 ||goto error_end
+   mfind /W /M "/.*\x22(https:\/\/repo\.anaconda\.com\/archive\/Anaconda3[^\/]*?Windows-x86_64.exe)\x22.*/$1/" "%TEMP%\anaconda_download.txt" >nul 2>&1 ||call :error_end 1
    set /p conda_URL=<"%TEMP%\anaconda_download.txt"
 )
 del "%TEMP%\anaconda_download.txt"
-echo "%conda_URL%"|findstr /X ".https://repo\.anaconda\.com/archive/Anaconda3[^/]*Windows-[^/]*.exe." >nul ||goto error_end
+echo "%conda_URL%"|findstr /X ".https://repo\.anaconda\.com/archive/Anaconda3[^/]*Windows-[^/]*.exe." >nul ||call :error_end 1
 echo Download Anaconda
 
 echo.
-curl -H %UA% --retry 5 -o "%TEMP%\Anaconda_Windows-setup.exe" "%conda_URL%"
+curl -H %UA% --retry 10 --fail -o "%TEMP%\Anaconda_Windows-setup.exe" "%conda_URL%"
+if not "%ERRORLEVEL%"=="0" call :error_end 2
 echo.
 echo Install Anaconda
 echo.
@@ -46,23 +47,28 @@ powershell Start-Process "%TEMP%\Anaconda_Windows-setup.bat" -Wait -Verb runas
 del "%TEMP%\Anaconda_Windows-setup.bat"
 del "%TEMP%\Anaconda_Windows-setup.exe"
 
-"%UserProfile%\Anaconda3\Scripts\conda.exe" update conda -y
-"%UserProfile%\Anaconda3\Scripts\conda.exe" update --all -y
-"%UserProfile%\Anaconda3\Scripts\pip.exe" install chainer
-if defined cuda_ver "%UserProfile%\Anaconda3\Scripts\pip.exe" install cupy-cuda%cuda_ver%
-"%UserProfile%\Anaconda3\Scripts\pip.exe" install wand
-"%UserProfile%\Anaconda3\Scripts\pip.exe" install pillow
+cd /d "%UserProfile%\Anaconda3\"
+call "%UserProfile%\Anaconda3\Scripts\activate.bat" "%UserProfile%\Anaconda3"
+call conda update conda -y
+call conda update --all -y
+call pip install chainer
+if defined cuda_ver call pip install cupy-cuda%cuda_ver%
+call pip install wand
+call pip install pillow
+call "%UserProfile%\Anaconda3\Scripts\deactivate.bat"
+
 goto install_waifu2x-chainer
 
 :install_waifu2x-chainer
 echo.
 echo Download waifu2x-chainer
 echo.
-curl -H %UA% --retry 5 -o "%TEMP%\waifu2x-chainer.zip" -L "https://github.com/tsurumeso/waifu2x-chainer/archive/master.zip"
+curl -H %UA% --fail --retry 5 -o "%TEMP%\waifu2x-chainer.zip" -L "https://github.com/tsurumeso/waifu2x-chainer/archive/master.zip"
+if not "%ERRORLEVEL%"=="0" call :error_end 3
 7za.exe x -y -o"%TEMP%\" "%TEMP%\waifu2x-chainer.zip"
 del "%TEMP%\waifu2x-chainer.zip"
 xcopy /E /I /H /y "%TEMP%\waifu2x-chainer-master" "C:\waifu2x-chainer"
-rd "%TEMP%\waifu2x-chainer-master"
+rd /s /q "%TEMP%\waifu2x-chainer-master"
 :end
 cls
 echo successful Installation.
@@ -70,6 +76,8 @@ pause
 exit
 
 :error_end
-echo URL acquisition failed.
+if "%~1"=="1" echo URL acquisition failed.
+if "%~1"=="2" echo failed to download anaconda.
+if "%~1"=="3" echo failed to download waifu2x-chainer.
 pause
 exit
