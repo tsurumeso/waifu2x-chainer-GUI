@@ -34,9 +34,9 @@
     <sys:String x:Key="Main_Mode_Denoise_2">レベル2</sys:String>
     <sys:String x:Key="Main_Mode_Denoise_3">レベル3</sys:String>
     <sys:String x:Key="Main_Mode_Arch">モデル</sys:String>
-    <sys:String x:Key="Main_Mode_Arch_RGB">2次元イラスト (vgg7モデル)</sys:String>
-    <sys:String x:Key="Main_Mode_Arch_UpRGB">2次元イラスト (upconv7モデル)</sys:String>
-    <sys:String x:Key="Main_Mode_Arch_ResRGB">2次元イラスト (resnet10モデル)</sys:String>
+    <sys:String x:Key="Main_Mode_Arch_VGG7">2次元イラスト (VGG7モデル)</sys:String>
+    <sys:String x:Key="Main_Mode_Arch_UpConv7">2次元イラスト (UpConv7モデル)</sys:String>
+    <sys:String x:Key="Main_Mode_Arch_ResNet10">2次元イラスト (ResNet10モデル)</sys:String>
     <!-- Tabs -->
     <sys:String x:Key="MainTab_Preferences">動作設定</sys:String>
     <!-- Tab:Preferences -->

@@ -34,9 +34,9 @@
     <sys:String x:Key="Main_Mode_Denoise_2">Level 2</sys:String>
     <sys:String x:Key="Main_Mode_Denoise_3">Level 3</sys:String>
     <sys:String x:Key="Main_Mode_Arch">Model</sys:String>
-    <sys:String x:Key="Main_Mode_Arch_RGB">2-D illust (vgg7 Model)</sys:String>
-    <sys:String x:Key="Main_Mode_Arch_UpRGB">2-D illust (upconv7 Model)</sys:String>
-    <sys:String x:Key="Main_Mode_Arch_ResRGB">2-D illust (resnet10 Model)</sys:String>
+    <sys:String x:Key="Main_Mode_Arch_VGG7">2-D illust (VGG7 Model)</sys:String>
+    <sys:String x:Key="Main_Mode_Arch_UpConv7">2-D illust (UpConv7 Model)</sys:String>
+    <sys:String x:Key="Main_Mode_Arch_ResNet10">2-D illust (ResNet10 Model)</sys:String>
     <!-- Tabs -->
     <sys:String x:Key="MainTab_Preferences">Preferences</sys:String>
     <!-- Tab:Preferences -->

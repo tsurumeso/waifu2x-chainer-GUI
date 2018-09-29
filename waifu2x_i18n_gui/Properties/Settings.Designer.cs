@@ -12,7 +12,7 @@ namespace waifu2x_chainer_gui.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.6.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.8.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -25,7 +25,7 @@ namespace waifu2x_chainer_gui.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("ResRGB")]
+        [global::System.Configuration.DefaultSettingValueAttribute("ResNet10")]
         public string Arch {
             get {
                 return ((string)(this["Arch"]));
@@ -121,18 +121,6 @@ namespace waifu2x_chainer_gui.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool Aspect_ratio_keep {
-            get {
-                return ((bool)(this["Aspect_ratio_keep"]));
-            }
-            set {
-                this["Aspect_ratio_keep"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool SoundBeep {
             get {
@@ -140,18 +128,6 @@ namespace waifu2x_chainer_gui.Properties {
             }
             set {
                 this["SoundBeep"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public string outformat {
-            get {
-                return ((string)(this["outformat"]));
-            }
-            set {
-                this["outformat"] = value;
             }
         }
         

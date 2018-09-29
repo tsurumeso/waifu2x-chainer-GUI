@@ -92,9 +92,9 @@
                         </GroupBox>
                         <GroupBox Name="gpColor" Header="{DynamicResource ResourceKey=Main_Mode_Arch}" Padding="3" Margin="3">
                             <StackPanel Orientation="Vertical" Margin="3">
-                                <RadioButton Tag="-a 0" Name="btnRGB" Margin="2" Content="{DynamicResource ResourceKey=Main_Mode_Arch_RGB}" Checked="OnArchChecked"></RadioButton>
-                                <RadioButton Tag="-a 1" Name="btnUpRGB" Margin="2" Content="{DynamicResource ResourceKey=Main_Mode_Arch_UpRGB}" Checked="OnArchChecked"></RadioButton>
-                                <RadioButton Tag="-a 2" Name="btnResRGB" Margin="2" Content="{DynamicResource ResourceKey=Main_Mode_Arch_ResRGB}" Checked="OnArchChecked"></RadioButton>
+                                <RadioButton Tag="-a 0" Name="btnVGG7" Margin="2" Content="{DynamicResource ResourceKey=Main_Mode_Arch_VGG7}" Checked="OnArchChecked"></RadioButton>
+                                <RadioButton Tag="-a 1" Name="btnUpConv7" Margin="2" Content="{DynamicResource ResourceKey=Main_Mode_Arch_UpConv7}" Checked="OnArchChecked"></RadioButton>
+                                <RadioButton Tag="-a 2" Name="btnResNet10" Margin="2" Content="{DynamicResource ResourceKey=Main_Mode_Arch_ResNet10}" Checked="OnArchChecked"></RadioButton>
                             </StackPanel>
                         </GroupBox>
                         <GroupBox Name="gpBlock" Header="{DynamicResource ResourceKey=Main_Device_Block}" Padding="3" Margin="3">

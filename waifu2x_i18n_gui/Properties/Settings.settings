@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="Arch" Type="System.String" Scope="User">
-      <Value Profile="(Default)">ResRGB</Value>
+      <Value Profile="(Default)">ResNet10</Value>
     </Setting>
     <Setting Name="scale_ratio" Type="System.String" Scope="User">
       <Value Profile="(Default)">2</Value>
@@ -26,14 +26,8 @@
     <Setting Name="output_height" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="Aspect_ratio_keep" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
     <Setting Name="SoundBeep" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="outformat" Type="System.String" Scope="User">
-      <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="output_dir" Type="System.String" Scope="User">
       <Value Profile="(Default)">null</Value>
