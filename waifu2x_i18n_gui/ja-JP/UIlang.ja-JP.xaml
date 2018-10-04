@@ -37,6 +37,7 @@
     <sys:String x:Key="Main_Mode_Arch_VGG7">2次元イラスト (VGG7モデル)</sys:String>
     <sys:String x:Key="Main_Mode_Arch_UpConv7">2次元イラスト (UpConv7モデル)</sys:String>
     <sys:String x:Key="Main_Mode_Arch_ResNet10">2次元イラスト (ResNet10モデル)</sys:String>
+    <sys:String x:Key="Main_Mode_Arch_UpResNet10">2次元イラスト (UpResNet10モデル)</sys:String>
     <!-- Tabs -->
     <sys:String x:Key="MainTab_Preferences">動作設定</sys:String>
     <!-- Tab:Preferences -->

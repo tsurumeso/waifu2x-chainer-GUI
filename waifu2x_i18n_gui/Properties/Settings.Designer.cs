@@ -25,7 +25,7 @@ namespace waifu2x_chainer_gui.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("ResNet10")]
+        [global::System.Configuration.DefaultSettingValueAttribute("UpResNet10")]
         public string Arch {
             get {
                 return ((string)(this["Arch"]));

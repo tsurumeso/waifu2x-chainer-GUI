@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="Arch" Type="System.String" Scope="User">
-      <Value Profile="(Default)">ResNet10</Value>
+      <Value Profile="(Default)">UpResNet10</Value>
     </Setting>
     <Setting Name="scale_ratio" Type="System.String" Scope="User">
       <Value Profile="(Default)">2</Value>

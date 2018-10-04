@@ -104,7 +104,7 @@ namespace waifu2x_chainer_gui
             if (Properties.Settings.Default.noise_level == "0")
             { btnDenoise0.IsChecked = true; }
 
-            btnResNet10.IsChecked = true;
+            btnUpResNet10.IsChecked = true;
 
             if (Properties.Settings.Default.Arch == "VGG7")
             { btnVGG7.IsChecked = true; }
@@ -112,6 +112,8 @@ namespace waifu2x_chainer_gui
             { btnUpConv7.IsChecked = true; }
             if (Properties.Settings.Default.Arch == "ResNet10")
             { btnResNet10.IsChecked = true; }
+            if (Properties.Settings.Default.Arch == "UpResNet10")
+            { btnUpResNet10.IsChecked = true; }
             
             btnModeScale.IsChecked = true;
 
@@ -166,7 +168,7 @@ namespace waifu2x_chainer_gui
         public static StringBuilder param_mag = new StringBuilder("2");
         public static StringBuilder param_denoise = new StringBuilder("");
         public static StringBuilder param_denoise2 = new StringBuilder("");
-        public static StringBuilder param_arch = new StringBuilder("-a 2");
+        public static StringBuilder param_arch = new StringBuilder("-a 3");
         public static StringBuilder param_model = new StringBuilder("");
         public static StringBuilder param_color = new StringBuilder("RGB");
         public static StringBuilder param_block = new StringBuilder("-l 64");
@@ -250,6 +252,8 @@ namespace waifu2x_chainer_gui
             {Properties.Settings.Default.Arch = "UpConv7";}
             if (param_arch.ToString().Trim() == "-a 2")
             {Properties.Settings.Default.Arch = "ResNet10";}
+            if (param_arch.ToString().Trim() == "-a 3")
+            {Properties.Settings.Default.Arch = "UpResNet10";}
             
             Properties.Settings.Default.mode = param_mode.ToString().Replace("-m ", "");
 
@@ -327,8 +331,8 @@ namespace waifu2x_chainer_gui
             string msg =
                 "Multilingual GUI for waifu2x-chainer\n" +
                 "nanashi (2018)\n" +
-                "Version 1.1.5\n" +
-                "BuildDate: 21 Mar,2018\n" +
+                "Version 1.2\n" +
+                "BuildDate: 4 Oct,2018\n" +
                 "License: Do What the Fuck You Want License";
             MessageBox.Show(msg);
         }
@@ -667,6 +671,8 @@ namespace waifu2x_chainer_gui
             { param_model.Append("-d \"" + this.txtWaifu2x_chainerPath.Text + "\\models\\upconv7\""); }
             if (param_arch.ToString().Trim() == "-a 2")
             { param_model.Append("-d \"" + this.txtWaifu2x_chainerPath.Text + "\\models\\resnet10\""); }
+            if (param_arch.ToString().Trim() == "-a 3")
+            { param_model.Append("-d \"" + this.txtWaifu2x_chainerPath.Text + "\\models\\upresnet10\""); }
             
             param_color.Clear();
             param_color.Append("-c " + ComboColor_Mode.SelectedValue.ToString().ToLowerInvariant());
